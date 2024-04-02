@@ -15,6 +15,7 @@ function HomePage() {
 
   return (
     <>
+      {/* navbar */}
       <Navbar expand='lg' className='navbar-bg'>
         <Container style={{ maxWidth: '1200px' }} className='p-0'>
           <Navbar.Brand as={Link} to='/' className='navbar-brand custom-brand'>

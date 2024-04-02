@@ -1,0 +1,67 @@
+.hero-section {
+  background-image: url('../img/home-new-bg-free-img.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative; /* Ensure proper stacking of elements */
+}
+
+.navbar-brand {
+  color: #fff;
+}
+.navbar-brand .logo-image {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.navbar-bg {
+  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
+  color: #fff;
+}
+.custom-brand {
+  color: white !important;
+}
+
+.nav-link {
+  color: #fff !important;
+}
+
+.hero-section {
+  color: #fff;
+  padding: 100px 20px;
+  height: 100vh; /* Set height to fill viewport */
+  overflow-y: auto; /* Allow content to scroll */
+}
+
+.hero-content {
+  position: sticky; /* Make content sticky */
+  top: 0; /* Stick to the top of the container */
+  z-index: 1; /* Ensure content is above the background */
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.hero-section p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .hero-section p {
+    font-size: 1.2rem;
+  }
+}
+
+.space {
+  height: 100vh;
+}

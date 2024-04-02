@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Button, Container, Form, Nav, Navbar } from 'react-bootstrap'
-import { FaUser, FaRegUser } from 'react-icons/fa'
+import { Button, Container, Form, Nav, Navbar, Dropdown } from 'react-bootstrap'
+import { FaUser, FaRegUser, FaHeart, FaSignOutAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import '../CSS/Navbar.css'
 import smartBuyLogo from '../img/SB-removebg-preview.png'
@@ -17,7 +17,6 @@ function HomePage() {
     <>
       <Navbar expand='lg' className='navbar-bg'>
         <Container style={{ maxWidth: '1200px' }} className='p-0'>
-          {/* Set maxWidth */}
           <Navbar.Brand as={Link} to='/' className='navbar-brand custom-brand'>
             <img
               src={smartBuyLogo}
@@ -45,7 +44,7 @@ function HomePage() {
                 </Link>
               </Nav.Item>
             </Nav>
-            <Nav>
+            <Nav className='ml-auto'>
               <Nav.Link as={Link} to='/login'>
                 <FaUser />
                 <span className='ms-1 d-none d-sm-inline'>Login</span>
@@ -63,10 +62,34 @@ function HomePage() {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <Button variant='outline-light' as={Link} to={`/Allproducts`}>
+                <Button
+                  variant='outline-light'
+                  as={Link}
+                  to={`/Allproducts`}
+                  style={{ marginRight: '10px' }} // Added margin-right
+                >
                   Search
                 </Button>
               </Form>
+              <Dropdown className='ml-2'>
+                <Dropdown.Toggle variant='outline-light' id='dropdown-basic'>
+                  <FaUser />
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={Link} to='/profile'>
+                    <FaUser className='navigation-icon' />
+                    My Profile
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to='/favorites'>
+                    <FaHeart className='navigation-icon' />
+                    My Favorite List
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to='/logout'>
+                    <FaSignOutAlt className='navigation-icon' />
+                    Logout
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </Nav>
           </Navbar.Collapse>
         </Container>

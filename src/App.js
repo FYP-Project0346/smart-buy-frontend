@@ -1,27 +1,26 @@
-import logo from './logo.svg'
-import './App.css'
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './Pages/Home'
 import Login from './Pages/Login'
 import Register from './Pages/Register'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import AllProducts from './Pages/AllProducts'
 import Details from './Pages/Details'
 import AboutUs from './Pages/AboutUs'
 import ContactUs from './Pages/ContactUs'
-import Test from "./Pages/Test.js"
+import Profile from './Pages/Profile'
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route element={<Home />} path='/' />
-        <Route element={<Login />} path='/login' />
-        <Route element={<Register />} path='/register' />
-        <Route element={<AllProducts />} path='/Allproducts' />
-        <Route element={<Details />} path='/details/:id' />
-        <Route element={<AboutUs />} path='/about' />
-        <Route element={<ContactUs />} path='/contact' />
-        <Route element={<Test />} path='/test' />
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/Allproducts' element={<AllProducts />} />
+        <Route path='/details/:id' element={<Details />} />
+        <Route path='/about' element={<AboutUs />} />
+        <Route path='/contact' element={<ContactUs />} />
+        <Route path='/profile' element={<Profile />} />
       </Routes>
     </Router>
   )

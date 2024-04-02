@@ -15,7 +15,7 @@ function HomePage() {
 
   return (
     <>
-      {/* navbar */}
+      {/* Navbar */}
       <Navbar expand='lg' className='navbar-bg'>
         <Container style={{ maxWidth: '1200px' }} className='p-0'>
           <Navbar.Brand as={Link} to='/' className='navbar-brand custom-brand'>
@@ -66,8 +66,8 @@ function HomePage() {
                 <Button
                   variant='outline-light'
                   as={Link}
-                  to={`/Allproducts`}
-                  style={{ marginRight: '10px' }} // Added margin-right
+                  to='/Allproducts'
+                  style={{ marginRight: '10px' }}
                 >
                   Search
                 </Button>
@@ -96,6 +96,7 @@ function HomePage() {
         </Container>
       </Navbar>
 
+      {/* Hero Section */}
       <div className='hero-section'>
         <Container className='fixed-container'>
           <div className='row'>

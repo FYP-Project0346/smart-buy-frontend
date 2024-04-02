@@ -8,7 +8,7 @@ import AllProducts from './Pages/AllProducts'
 import Details from './Pages/Details'
 import AboutUs from './Pages/AboutUs'
 import ContactUs from './Pages/ContactUs'
-import Test from "./Pages/Test"
+import Test from "./Pages/Test.js"
 
 function App() {
   return (

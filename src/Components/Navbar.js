@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Container, Form, Nav, Navbar } from 'react-bootstrap'
 import { FaUser, FaRegUser } from 'react-icons/fa'
-import { Link } from 'react-router-dom' // Import Link from react-router-dom
+import { Link } from 'react-router-dom'
 import '../CSS/Navbar.css'
 import smartBuyLogo from '../img/SB-removebg-preview.png'
 
@@ -15,8 +15,9 @@ function HomePage() {
 
   return (
     <>
-      <Navbar expand='lg' className='navbar-bg fixed-top'>
-        <Container>
+      <Navbar expand='lg' className='navbar-bg'>
+        <Container style={{ maxWidth: '1200px' }} className='p-0'>
+          {/* Set maxWidth */}
           <Navbar.Brand as={Link} to='/' className='navbar-brand custom-brand'>
             <img
               src={smartBuyLogo}
@@ -94,7 +95,7 @@ function HomePage() {
                   style={{
                     border: '1px solid white',
                     background: 'transparent',
-                    marginTop: '20px', // Add margin-top
+                    marginTop: '20px',
                   }}
                 >
                   Find More

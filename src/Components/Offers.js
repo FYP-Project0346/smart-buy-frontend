@@ -19,17 +19,14 @@ const SpecialOffer = () => {
       <Container>
         <Row className='align-items-center'>
           {' '}
-          {/* Align items vertically */}
           <Col md={6}>
             <div style={{ padding: '20px', margin: '20px' }}>
               <h2 style={{ fontSize: '32px', fontWeight: 'bold' }}>
                 {' '}
-                {/* Increased font size of h1 to 32px */}
                 Limited Time Offer
               </h2>
               <h1 style={{ fontSize: '24px', marginTop: '10px' }}>
                 {' '}
-                {/* Increased font size of h3 to 24px */}
                 Special Edition
               </h1>
               <div style={{ marginTop: '20px', fontSize: '18px' }}>

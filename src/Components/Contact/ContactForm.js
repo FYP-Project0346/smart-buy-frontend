@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import services from '../../services/services'
 
 class ContactForm extends Component {
   state = {
@@ -6,6 +7,7 @@ class ContactForm extends Component {
     email: '',
     subject: '',
     message: '',
+    islogin: false,
   }
 
   handleInputChange = (e) => {
@@ -13,78 +15,127 @@ class ContactForm extends Component {
     this.setState({ [name]: value })
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault()
 
-    console.log(this.state)
+    if (this.state.name === '') {
+      alert('Plz provide name')
+      return
+    } else if (this.state.email === '') {
+      alert('provide email')
+    } else if (this.state.message === '') {
+      alert('provide Message')
+    } else if (this.state.subject === '') {
+      alert('provide Subject')
+    }
+    const currentDate = new Date().toLocaleString() // Get current date and time
+    const formData = {
+      name: this.state.name,
+      email: this.state.email,
+      subject: this.state.subject,
+      message: this.state.message,
+      currentDate: currentDate,
+      islogin: this.state.islogin,
+    }
+
+    try {
+      const isSuccess = await services.saveMessage(formData)
+      if (isSuccess) {
+        alert('Message save sucessfully')
+      } else {
+        alert('Failed to save message')
+      }
+    } catch (error) {
+      console.error('Error saving message:', error)
+      alert('Error saving message:')
+    }
   }
 
   render() {
+    const { name, email, subject, message } = this.state
+
     return (
       <div
-        class='container-fluid pt-5'
-        style={{ width: '100%', 'margin-top': '40px' }}
+        className='container-fluid pt-5'
+        style={{ width: '100%', marginTop: '40px' }}
       >
-        <div class='text-center mb-4'>
-          <h2 class='section-title px-5'>
-            <span class='px-2'>Contact For Any Queries</span>
+        <div className='text-center mb-4'>
+          <h2 className='section-title px-5'>
+            <span className='px-2'>Contact For Any Queries</span>
           </h2>
         </div>
         <div
-          class='row px-xl-5'
-          style={{ width: '100%', 'margin-top': '40px' }}
+          className='row px-xl-5'
+          style={{ width: '100%', marginTop: '40px' }}
         >
-          <div class='col-lg-7 mb-5'>
-            <div class='contact-form'>
+          <div className='col-lg-7 mb-5'>
+            <div className='contact-form'>
               <div id='success'></div>
-              <form name='sentMessage' id='contactForm' novalidate='novalidate'>
-                <div class='control-group'>
+              <form
+                name='sentMessage'
+                id='contactForm'
+                noValidate='novalidate'
+                onSubmit={this.handleSubmit}
+              >
+                <div className='control-group'>
                   <input
                     type='text'
-                    class='form-control'
+                    className='form-control'
                     id='name'
+                    name='name'
                     placeholder='Your Name'
+                    value={name}
+                    onChange={this.handleInputChange}
                     required='required'
                     data-validation-required-message='Please enter your name'
                   />
-                  <p class='help-block text-danger'></p>
+                  <p className='help-block text-danger'></p>
                 </div>
-                <div class='control-group'>
+                <div className='control-group'>
                   <input
                     type='email'
-                    class='form-control'
+                    className='form-control'
                     id='email'
+                    name='email'
                     placeholder='Your Email'
+                    value={email}
+                    onChange={this.handleInputChange}
                     required='required'
                     data-validation-required-message='Please enter your email'
                   />
-                  <p class='help-block text-danger'></p>
+                  <p className='help-block text-danger'></p>
                 </div>
-                <div class='control-group'>
+                <div className='control-group'>
                   <input
                     type='text'
-                    class='form-control'
+                    className='form-control'
                     id='subject'
+                    name='subject'
                     placeholder='Subject'
+                    value={subject}
+                    onChange={this.handleInputChange}
                     required='required'
                     data-validation-required-message='Please enter a subject'
                   />
-                  <p class='help-block text-danger'></p>
+                  <p className='help-block text-danger'></p>
                 </div>
-                <div class='control-group'>
+                <div className='control-group'>
                   <textarea
-                    class='form-control'
+                    className='form-control'
                     rows='6'
                     id='message'
+                    name='message'
                     placeholder='Message'
+                    value={message}
+                    onChange={this.handleInputChange}
                     required='required'
                     data-validation-required-message='Please enter your message'
                   ></textarea>
-                  <p class='help-block text-danger'></p>
+                  <p className='help-block text-danger'></p>
                 </div>
                 <div>
                   <button
-                    class='ubtn-primary py-2 px-4'
+                    className='ubtn-primary py-2 px-4'
                     type='submit'
                     id='sendMessageButton'
                   >
@@ -94,24 +145,26 @@ class ContactForm extends Component {
               </form>
             </div>
           </div>
-          <div class='col-lg-5 mb-5'>
-            <h5 class='font-weight-semi-bold mb-3'>Get In Touch</h5>
+          <div className='col-lg-5 mb-5'>
+            <h5 className='font-weight-semi-bold mb-3'>Get In Touch</h5>
             <p>
               Justo sed diam ut sed amet duo amet lorem amet stet sea ipsum, sed
               duo amet et. Est elitr dolor elitr erat sit sit. Dolor diam et
               erat clita ipsum justo sed.
             </p>
-            <div class='d-flex flex-column mb-3'>
-              <h5 class='font-weight-semi-bold mb-3'>Store 1</h5>
-              <p class='mb-2'>
-                <i class='fa fa-map-marker-alt text-primary mr-3'></i>123
+            <div className='d-flex flex-column mb-3'>
+              <h5 className='font-weight-semi-bold mb-3'>Store 1</h5>
+              <p className='mb-2'>
+                <i className='fa fa-map-marker-alt text-primary mr-3'></i>123
                 Street, Islamabad, Pakistan
               </p>
-              <p class='mb-2'>
-                <i class='fa fa-envelope text-primary mr-3'></i>info@example.com
+              <p className='mb-2'>
+                <i className='fa fa-envelope text-primary mr-3'></i>
+                info@example.com
               </p>
-              <p class='mb-2'>
-                <i class='fa fa-phone-alt text-primary mr-3'></i>+92 345 67890
+              <p className='mb-2'>
+                <i className='fa fa-phone-alt text-primary mr-3'></i>+92 345
+                67890
               </p>
             </div>
           </div>

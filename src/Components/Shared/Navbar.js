@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom' // Import Link from react-router-dom
 import '../../CSS/Navbar.css'
 import smartBuyLogo from '../../img/SB-removebg-preview.png'
 
-function HomePage({searchActionHandler}) {
-  const [searchTerm, setSearchTerm] = useState("")
+function HomePage({ searchActionHandler }) {
+  const [searchTerm, setSearchTerm] = useState('')
 
   const handleSearch = async () => {
     await searchActionHandler(searchTerm)
@@ -53,16 +53,23 @@ function HomePage({searchActionHandler}) {
                 <FaRegUser />
                 <span className='ms-1 d-none d-sm-inline'>Register</span>
               </Nav.Link>
-                <input
-                  placeholder='Search'
-                  className='me-2'
-                  aria-label='Search'
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <Button onClick={()=>{handleSearch()}} variant='outline-light' as={Link} to={`/Allproducts`}>
-                  Search
-                </Button>
+              <input
+                placeholder='Search'
+                className='me-2'
+                aria-label='Search'
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <Button
+                onClick={() => {
+                  handleSearch()
+                }}
+                variant='outline-light'
+                as={Link}
+                to={`/Allproducts`}
+              >
+                Search
+              </Button>
             </Nav>
           </Navbar.Collapse>
         </Container>

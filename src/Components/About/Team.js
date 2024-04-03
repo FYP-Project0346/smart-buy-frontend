@@ -1,16 +1,16 @@
 import React from 'react'
-import johnImage from '../../img/women-fashion-free-img.jpg'
-import janeImage from '../../img/men-fashion-free-img.jpg'
-import aliceImage from '../../img/women-fashion-free-img.jpg'
+import shoba from '../../img/shoba (2).jpeg'
+import abdulrehman from '../../img/Abdul rehman.jpeg'
+import aisha from '../../img/Aisha.jpeg'
 
 const OurTeam = () => {
   const teamMembers = [
-    { name: 'Shoba Rohra', designation: 'Designer', image: johnImage },
-    { name: 'Abdul Rehman', designation: 'Developer', image: janeImage },
+    { name: 'Shoba Rohra', designation: 'Designer', image: shoba },
+    { name: 'Abdul Rehman', designation: 'Developer', image: abdulrehman },
     {
       name: 'Ayesha Fatima',
       designation: 'Marketing Manager',
-      image: aliceImage,
+      image: aisha,
     },
   ]
 

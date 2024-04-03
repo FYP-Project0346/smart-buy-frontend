@@ -3,6 +3,8 @@ import { FaEnvelope, FaLock } from 'react-icons/fa'
 import '../CSS/Style.css'
 import { login } from '../services/auth'
 import { useNavigate } from 'react-router'
+import userContext from '../Context/Create-Context'
+import { useContext } from 'react'
 
 function Login() {
   const navigate = useNavigate()
@@ -10,14 +12,12 @@ function Login() {
   const [password, setPassword] = useState('')
   const [rememberMe, setRememberMe] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
+  const profile = useContext(userContext)
 
   const handleLoginClick = async () => {
-    // console.log('Email:', email)
-    // console.log('Password:', password)
-    // console.log('Remember Me:', rememberMe)
-
     const response = await login(email, password, rememberMe)
     if (response) {
+      profile.update(response)
       navigate('/')
     } else {
       alert('Login Failed')

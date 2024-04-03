@@ -130,3 +130,8 @@
 .custom-blue {
   color: rgb(41, 139, 196);
 }
+
+.text-button{
+  border: none;
+  background-color: transparent;
+}

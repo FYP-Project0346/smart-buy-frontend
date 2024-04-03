@@ -35,8 +35,8 @@ function RegisterForm() {
       email: formData.email,
       password: formData.password,
     })
-
-    if (data) {
+    console.log(data)
+    if (data.code == 200) {
       navigate('/')
     } else {
       setErrorMessage('Invalid email or password')

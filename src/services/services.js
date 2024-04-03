@@ -25,7 +25,7 @@ async function getAllProducts(
     let response = await axios.get(GET_ALL_PRODUCTS_API, {
       params,
     })
-    return response.data
+    return response.data.data
   } catch (e) {
     alert('Could not get the data')
   }
@@ -38,7 +38,7 @@ async function getProductById(id) {
         id: id,
       },
     })
-    return response.data
+    return response.data.data
   } catch (e) {
     return []
   }
@@ -50,7 +50,7 @@ async function saveMessage(data) {
       'http://localhost:5000/contact/save',
       data
     )
-    return response.status == 200
+    return response.data.code == 200
   } catch (e) {
     return false
   }

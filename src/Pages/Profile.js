@@ -22,7 +22,6 @@ function Profile() {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(formData)
-    // Here you can add logic to submit the form data to your backend
   }
 
   return (
@@ -86,7 +85,6 @@ function Profile() {
               <option value='Lahore'>Lahore</option>
               <option value='Islamabad'>Islamabad</option>
               <option value='Rawalpindi'>Rawalpindi</option>
-              {/* Add more cities here */}
             </Form.Select>
           </Form.Group>
         </Row>

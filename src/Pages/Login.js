@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FaEnvelope, FaLock } from 'react-icons/fa'
 import '../CSS/Style.css'
 import { login } from '../services/auth'
-import { useNavigate } from 'react-router'
+import { useNavigate, Link } from 'react-router-dom'
 import userContext from '../Context/Create-Context'
 import { useContext } from 'react'
 
@@ -15,13 +15,17 @@ function Login() {
   const profile = useContext(userContext)
 
   const handleLoginClick = async () => {
-    const response = await login(email, password, rememberMe)
-    if (response) {
-      profile.update(response)
-      navigate('/')
+    if (rememberMe) {
+      const response = await login(email, password, rememberMe)
+      if (response) {
+        profile.update(response)
+        navigate('/')
+      } else {
+        alert('Login Failed')
+        setErrorMessage('Invalid email or password')
+      }
     } else {
-      alert('Login Failed')
-      setErrorMessage('Invalid email or password')
+      alert('Please check the "Remember Me" checkbox to proceed.')
     }
   }
 
@@ -56,6 +60,7 @@ function Login() {
                 className='form-input'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                style={{ color: 'white' }}
               />
             </div>
           </div>
@@ -68,9 +73,9 @@ function Login() {
               onChange={(e) => setRememberMe(e.target.checked)}
             />
             <label htmlFor='remember-me'>Remember Me</label>
-            <a href='#' className='forgot-password'>
+            <Link to='/forgot-password' className='forgot-password'>
               Forgot Password?
-            </a>
+            </Link>
           </div>
           <div className='form-group'>
             <button
@@ -83,7 +88,7 @@ function Login() {
           </div>
           <div className='form-group'>
             <p className='signup-text'>
-              Don't have an account? <a href='#'>Sign up</a>
+              Don't have an account? <Link to='/register'>Sign up</Link>
             </p>
           </div>
         </div>

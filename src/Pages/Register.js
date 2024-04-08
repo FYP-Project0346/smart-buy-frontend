@@ -46,7 +46,10 @@ function RegisterForm() {
   return (
     <div className='register-container'>
       <div className='background-img'></div>
-      <Container className='register-form-container'>
+      <Container
+        className='register-form-container'
+        style={{ maxWidth: '450px', padding: '20px' }}
+      >
         <div className='register-form'>
           <h2>Register</h2>
           <form onSubmit={handleSubmit}>
@@ -87,6 +90,7 @@ function RegisterForm() {
                 className='form-input'
                 value={formData.password}
                 onChange={handleChange}
+                style={{ color: 'white' }}
               />
             </div>
             <div className='form-group'>
@@ -100,6 +104,7 @@ function RegisterForm() {
                 className='form-input'
                 value={formData.confirmPassword}
                 onChange={handleChange}
+                style={{ color: 'white' }}
               />
             </div>
             <div className='form-group'>

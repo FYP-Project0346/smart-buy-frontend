@@ -18,16 +18,17 @@ class ContactForm extends Component {
   handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (this.state.name === '') {
-      alert('Plz provide name')
+    // Check if all required fields are filled out
+    if (
+      this.state.name === '' ||
+      this.state.email === '' ||
+      this.state.message === '' ||
+      this.state.subject === ''
+    ) {
+      alert('Please fill out all required fields')
       return
-    } else if (this.state.email === '') {
-      alert('provide email')
-    } else if (this.state.message === '') {
-      alert('provide Message')
-    } else if (this.state.subject === '') {
-      alert('provide Subject')
     }
+
     const currentDate = new Date().toLocaleString() // Get current date and time
     const formData = {
       name: this.state.name,
@@ -41,13 +42,13 @@ class ContactForm extends Component {
     try {
       const isSuccess = await services.saveMessage(formData)
       if (isSuccess) {
-        alert('Message save sucessfully')
+        alert('Message saved successfully')
       } else {
         alert('Failed to save message')
       }
     } catch (error) {
       console.error('Error saving message:', error)
-      alert('Error saving message:')
+      alert('Error saving message')
     }
   }
 
@@ -135,9 +136,10 @@ class ContactForm extends Component {
                 </div>
                 <div>
                   <button
-                    className='ubtn-primary py-2 px-4'
+                    className='py-2 px-4'
                     type='submit'
                     id='sendMessageButton'
+                    style={{ backgroundColor: '#007BFF', color: '#FFFFFF' }} // Replace '#007BFF' with your primary color
                   >
                     Send Message
                   </button>

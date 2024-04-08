@@ -5,8 +5,12 @@ import aisha from '../../img/Aisha.jpeg'
 
 const OurTeam = () => {
   const teamMembers = [
-    { name: 'Shoba Rohra', designation: 'Designer', image: shoba },
-    { name: 'Abdul Rehman', designation: 'Developer', image: abdulrehman },
+    { name: 'Shoba Rohra', designation: 'Frontend Developer', image: shoba },
+    {
+      name: 'Abdul Rehman',
+      designation: 'Backend Developer',
+      image: abdulrehman,
+    },
     {
       name: 'Ayesha Fatima',
       designation: 'Marketing Manager',

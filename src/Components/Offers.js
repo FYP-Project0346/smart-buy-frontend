@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import backgroundImage from '../img/th1.jpg'
-import rightImage from '../img/boyimage.png'
+import rightImage from '../img/Boy.png'
 
 const SpecialOffer = () => {
   const containerStyle = {

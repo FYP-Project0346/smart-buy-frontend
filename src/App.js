@@ -11,6 +11,7 @@ import Profile from './Pages/Profile'
 import ProfileState from './Context/UserState'
 import Test from './Pages/Test'
 import ForgetPassword from './Components/ForgetPassward'
+import SetCode from './Components/SetCode'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path='/contact' element={<ContactUs />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/forgot-password' element={<ForgetPassword />} />
+          <Route path='/setcode' element={<SetCode />} />
         </Routes>
       </Router>
     </ProfileState>

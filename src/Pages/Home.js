@@ -5,33 +5,40 @@ import Website from '../Components/Website'
 import Products from '../Components/Products'
 import Footer from '../Components/Shared/Footer'
 import Featured from '../Components/Featured'
-import service from "../services/services"
+import service from '../services/services'
 import { useEffect } from 'react'
 import { useState } from 'react'
-
+import DataProducts from '../Components/DataProducts'
 
 function Home() {
   const [products, setProducts] = useState()
 
-  useEffect(()=>{
+  useEffect(() => {
     getProducts()
   }, [])
 
-  async function getProducts(){
-    const data = await service.getAllProducts(undefined, undefined, undefined, undefined, undefined, ["hello", "world"])
+  async function getProducts() {
+    const data = await service.getAllProducts(
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      ['hello', 'world']
+    )
     setProducts(data)
   }
 
-  if (!products){
+  if (!products) {
     return null
   }
-
 
   return (
     <div>
       <Navbar />
       <Website />
-      <Products doesShow={true} products={products} />
+      {/* <Products doesShow={true} products={products} /> */}
+      <DataProducts doesShow={true} products={products} />
       <Offers />
       <Featured />
       <Footer />

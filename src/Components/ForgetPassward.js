@@ -28,9 +28,9 @@ function ForgotPassword() {
           />
         </div>
         <div className='form-group'>
-          <button type='submit' className='submit-button'>
+          <Link to='/setcode' className='submit-button'>
             Reset Password
-          </button>
+          </Link>
         </div>
         {message && <p className='message'>{message}</p>}
         <p className='back-to-login'>

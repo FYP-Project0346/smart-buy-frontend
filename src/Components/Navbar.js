@@ -13,74 +13,76 @@ function HomePage() {
   const [searchTerm, setSearchTerm] = useState('')
   const profile = useContext(userContext)
 
+  useEffect(() => {
+    handleAutoLogin()
+  }, [])
 
-    useEffect(()=>{
-      handleAutoLogin()
-    }, [])
-
-    async function handleAutoLogin(){
-      if (profile.state.type !== "guest"){
-        return
-      }
-
-      const data = await autologin()
-      if (data){
-        profile.update(data)
-      }
+  async function handleAutoLogin() {
+    if (profile.state.type !== 'guest') {
+      return
     }
+
+    const data = await autologin()
+    if (data) {
+      profile.update(data)
+    }
+  }
 
   const handleSearch = (e) => {
     e.preventDefault()
     console.log('Searching for:', searchTerm)
   }
 
-  function handleLogout(){
-    clearoutLoginCookies();
-    profile.reset();
+  function handleLogout() {
+    clearoutLoginCookies()
+    profile.reset()
   }
 
-  function handleLoginRegisterVisibility(){
-    if (profile.state.type === "guest"){
-      return <>
-      <Nav.Link as={Link} to='/login'>
-          <FaUser />
-          <span className='ms-1 d-none d-sm-inline'>Login</span>
-        </Nav.Link>
-        <Nav.Link as={Link} to='/register'>
-          <FaRegUser />
-          <span className='ms-1 d-none d-sm-inline'>Register</span>
-        </Nav.Link>
-    </>
+  function handleLoginRegisterVisibility() {
+    if (profile.state.type === 'guest') {
+      return (
+        <>
+          <Nav.Link as={Link} to='/login'>
+            <FaUser />
+            <span className='ms-1 d-none d-sm-inline'>Login</span>
+          </Nav.Link>
+          <Nav.Link as={Link} to='/register'>
+            <FaRegUser />
+            <span className='ms-1 d-none d-sm-inline'>Register</span>
+          </Nav.Link>
+        </>
+      )
     }
     return <></>
   }
 
-
-  function handleProfileDetailsDropdownVisibility(){
-    if (profile.state.type != "guest"){
-      return <>
-      <Dropdown className='ml-2'>
-                <Dropdown.Toggle variant='outline-light' id='dropdown-basic'>
-                  <FaUser />
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to='/profile'>
-                    <FaUser className='navigation-icon' />
-                    My Profile
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to='/favorites'>
-                    <FaHeart className='navigation-icon' />
-                    My Favorite List
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    <FaSignOutAlt className='navigation-icon' />
-                      <button onClick={handleLogout} className='text-button'>
-                        Logout
-                      </button>
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-      </>
+  function handleProfileDetailsDropdownVisibility() {
+    if (profile.state.type != 'guest') {
+      return (
+        <>
+          <Dropdown className='ml-2'>
+            <Dropdown.Toggle variant='outline-light' id='dropdown-basic'>
+              <FaUser />
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item as={Link} to='/profile'>
+                <FaUser className='navigation-icon' />
+                My Profile
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to='/favorites'>
+                <FaHeart className='navigation-icon' />
+                My Favorite List
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <FaSignOutAlt className='navigation-icon' />
+                <button onClick={handleLogout} className='text-button'>
+                  Logout
+                </button>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </>
+      )
     }
 
     return <></>
@@ -177,7 +179,6 @@ function HomePage() {
             </div>
           </div>
         </Container>
-        
       </div>
     </>
   )

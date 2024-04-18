@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import { Button, Container, Form, Nav, Navbar } from 'react-bootstrap'
 import { FaUser, FaRegUser } from 'react-icons/fa'
-import { Link } from 'react-router-dom' // Import Link from react-router-dom
+import { Link } from 'react-router-dom'
 import '../../CSS/Navbar.css'
 import smartBuyLogo from '../../img/SB-removebg-preview.png'
 
-function HomePage({ searchActionHandler }) {
-  const [searchTerm, setSearchTerm] = useState('')
-
+function HomePage({ searchActionHandler, searchTerm, setSearchTerm }) {
   const handleSearch = async () => {
     await searchActionHandler(searchTerm)
     console.log('Searching for:', searchTerm)

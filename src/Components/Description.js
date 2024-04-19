@@ -3,13 +3,21 @@ import { useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faHeart, faBell } from '@fortawesome/free-solid-svg-icons'
 import service from "../services/services.js"
-import axios from 'axios'
+import { subscribe } from '../services/price_tracker_service.js'
+import { useContext } from 'react'
+import userContext from "../Context/Create-Context.js"
+import { useNavigate } from 'react-router-dom'
+
+
 
 function Details() {
+  const navigate = useNavigate();
   const [data, setData] = useState(null)
   const [isFavouriteClicked, setIsFavouriteClicked] = useState(false)
   const [isSubscribeClicked, setIsSubscribeClicked] = useState(false)
   const { id } = useParams()
+  const user = useContext(userContext)
+  
 
   const fetchData = async () => {
     try {
@@ -20,16 +28,30 @@ function Details() {
     }
   }
 
+  const handleSubscribeButtonActionHandler = async ()=>{
+    const userId = user.id
+    // if (userId == undefined){
+    //   navigate("/login")
+    //   return;
+    // }
+    // if (userId == ""){
+    //   navigate("/login")
+    //   return ;
+    // }
+
+    console.log(userId)
+  }
+
   useEffect(() => {
     fetchData()
   }, [])
 
-  useEffect(() => {
-    if (data) {
-      console.log('Data:', data)
-      console.log('Image URL:', data.images[0])
-    }
-  }, [data])
+  // useEffect(() => {
+  //   if (data) {
+  //     console.log('Data:', data)
+  //     console.log('Image URL:', data.images[0])
+  //   }
+  // }, [data])
 
   const renderStars = (rating) => {
     const stars = []
@@ -126,11 +148,9 @@ function Details() {
                   color: 'white',
                   padding: '10px 15px',
                 }}
-                onClick={() => {
-                  console.log('Price Tracker clicked')
-                }}
+                onClick={handleSubscribeButtonActionHandler}
               >
-                Price Tracker
+                Subscribe
               </button>
               <button
                 className='btn btn-primary px-3 ml-4'

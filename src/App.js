@@ -27,7 +27,7 @@ function App() {
           <Route path='/contact' element={<ContactUs />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/forgot-password' element={<ForgetPassword />} />
-          <Route path='/setcode' element={<SetCode />} />
+          <Route path='/setcode/:email' element={<SetCode />} />
         </Routes>
       </Router>
     </ProfileState>

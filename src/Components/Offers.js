@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import backgroundImage from '../img/th1.jpg'
 import rightImage from '../img/Boy.png'
+import { Link } from 'react-router-dom'
 
 const SpecialOffer = () => {
   const containerStyle = {
@@ -38,7 +39,9 @@ const SpecialOffer = () => {
               </div>
             </div>
             <div className='d-flex justify-content-center'>
-              <Button variant='light'>Shop Now</Button>
+              <Link to='/Allproducts'>
+                <Button variant='light'>Shop Now</Button>
+              </Link>
             </div>
           </Col>
           <Col md={6} className='d-flex justify-content-center'>

@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap'
 import { FaStar } from 'react-icons/fa'
 import { CiStar } from 'react-icons/ci'
 import { Link } from 'react-router-dom'
 
-const FeaturedProducts = ({ doesShow, products }) => {
+const FeaturedProducts = ({
+  doesShow,
+  products,
+  setMaxPrice,
+  maxPrice,
+  setMinPrice,
+  minPrice,
+}) => {
   const [selectedStores, setSelectedStores] = useState([])
-  const [minPrice, setMinPrice] = useState('')
-  const [maxPrice, setMaxPrice] = useState('')
-  const [filteredProducts, setFilteredProducts] = useState(products)
 
   const renderStars = (rating) => {
     const stars = []
@@ -21,25 +25,14 @@ const FeaturedProducts = ({ doesShow, products }) => {
 
     return stars
   }
-
-  const handleSearch = () => {
-    // Filter products based on selected stores and price range
-    const newFilteredProducts = products.filter((product) => {
-      const isStoreMatch =
-        selectedStores.length === 0 || selectedStores.includes(product.store)
-      const isMinPriceMatch =
-        !minPrice || parseFloat(product.price) >= parseFloat(minPrice)
-      const isMaxPriceMatch =
-        !maxPrice || parseFloat(product.price) <= parseFloat(maxPrice)
-
-      return isStoreMatch && isMinPriceMatch && isMaxPriceMatch
-    })
-
-    setFilteredProducts(newFilteredProducts)
+  const featuredStyle = {
+    width: '100%',
+    marginTop: '90px',
+    // display: doesShow ? 'block' : 'none',
   }
 
   return (
-    <Container>
+    <Container style={featuredStyle}>
       <Row>
         <h2 style={{ display: doesShow ? 'block' : 'none' }}>
           Featured Products
@@ -86,14 +79,14 @@ const FeaturedProducts = ({ doesShow, products }) => {
               onChange={(e) => setMaxPrice(e.target.value)}
             />
           </Form.Group>
-          <Button variant='primary' onClick={handleSearch}>
+          {/* <Button variant='primary' onClick={handleSearch}>
             Search
-          </Button>
+          </Button> */}
         </Col>
 
         <Col xs={12} md={9}>
           <Row>
-            {filteredProducts.map((product) => (
+            {products.map((product) => (
               <Col key={product._id} xs={12} sm={6} md={4} lg={4}>
                 <Link
                   to={`/details/${product._id}`}

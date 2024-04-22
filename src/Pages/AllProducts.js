@@ -8,9 +8,10 @@ function AllProducts() {
   const [products, setProducts] = useState([])
   const [skipProducts, setSkipProducts] = useState(0)
   const [searchTerm, setSearchTerm] = useState('')
+  const [minprice, setMinPrice] = useState(0)
+  const [maxprice, setMaxPrice] = useState(0)
   let productsInPage = 16
-  let minprice = 10000
-  let maxprice = 25000
+
   async function searchProducts(query) {
     console.log('search products called...')
     const products = await dbService.getAllProducts(
@@ -21,7 +22,7 @@ function AllProducts() {
       minprice,
       undefined
     )
-    console.log(products)
+    // console.log(products)
     setProducts(products)
   }
 
@@ -63,7 +64,14 @@ function AllProducts() {
         setSearchTerm={setSearchTerm}
       />
 
-      <Products doesShow={false} products={products} />
+      <Products
+        doesShow={false}
+        products={products}
+        setMaxPrice={setMaxPrice}
+        setMinPrice={setMinPrice}
+        maxPrice={maxprice}
+        minPrice={minprice}
+      />
       <div
         style={{
           display: 'flex',

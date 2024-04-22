@@ -157,13 +157,15 @@ function HomePage() {
               </h1>
               <h3>25% Off On All Products</h3>
               <div>
-                <Button
-                  variant='light'
-                  className='mx-2'
-                  style={{ marginTop: '20px' }}
-                >
-                  Shop Now
-                </Button>
+                <Link to={'/Allproducts'}>
+                  <Button
+                    variant='light'
+                    className='mx-2'
+                    style={{ marginTop: '20px' }}
+                  >
+                    Shop Now
+                  </Button>
+                </Link>
                 <Button
                   variant='secondary'
                   className='mx-2'

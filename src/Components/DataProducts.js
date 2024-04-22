@@ -26,6 +26,7 @@ const DataProducts = ({ doesShow, products }) => {
     width: '100%',
     marginTop: '80px',
     display: doesShow ? 'block' : 'none',
+    textAlign: 'center',
   }
 
   const linkStyle = {
@@ -39,7 +40,9 @@ const DataProducts = ({ doesShow, products }) => {
     overflow: 'hidden',
     textOverflow: 'ellipsis',
   }
-
+  const productsContainerStyle = {
+    marginTop: '20px',
+  }
   if (!products || products.length === 0) {
     return <h3>No Data Found!</h3>
   }
@@ -47,9 +50,9 @@ const DataProducts = ({ doesShow, products }) => {
   return (
     <Container>
       <Row>
-        <h2 style={featuredStyle}>Featured Products</h2>
+        <h1 style={featuredStyle}>Featured Products</h1>
       </Row>
-      <Row>
+      <Row style={productsContainerStyle}>
         {products.map((product) => (
           <Col key={product._id} xs={12} sm={6} md={4} lg={3}>
             <Link to={`/details/${product._id}`} style={linkStyle}>

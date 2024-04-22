@@ -9,6 +9,7 @@ import {
   FaGoogle,
 } from 'react-icons/fa'
 import '../../CSS/Style.css'
+import { Link } from 'react-router-dom'
 function Footer() {
   return (
     <div className='container-fluid bg-white text-dark mt-5 pt-5'>
@@ -46,47 +47,35 @@ function Footer() {
             <div className='col-md-4 mb-5'>
               <h5 className='font-weight-bold text-dark mb-4'>Quick Links</h5>
               <div className='d-flex flex-column justify-content-start'>
-                <a className='text-dark mb-2' href='index.html'>
+                <Link to='/' className='text-dark mb-2'>
                   <i className='fa fa-angle-right mr-2'></i>Home
-                </a>
-                <a class='text-dark mb-2' href='shop.html'>
-                  <i class='fa fa-angle-right mr-2'></i>Our Shop
-                </a>
-                <a class='text-dark mb-2' href='detail.html'>
-                  <i class='fa fa-angle-right mr-2'></i>Shop Detail
-                </a>
-                <a class='text-dark mb-2' href='cart.html'>
-                  <i class='fa fa-angle-right mr-2'></i>Shopping Cart
-                </a>
-                <a class='text-dark mb-2' href='checkout.html'>
-                  <i class='fa fa-angle-right mr-2'></i>Checkout
-                </a>
-                <a class='text-dark' href='contact.html'>
-                  <i class='fa fa-angle-right mr-2'></i>Contact Us
-                </a>
+                </Link>
+                <Link to='/Allproducts' className='text-dark mb-2'>
+                  <i className='fa fa-angle-right mr-2'></i>Our Shop
+                </Link>
+                <Link to='/about' className='text-dark mb-2'>
+                  <i className='fa fa-angle-right mr-2'></i>About us
+                </Link>
+                <Link to='/contact' className='text-dark'>
+                  <i className='fa fa-angle-right mr-2'></i>Contact Us
+                </Link>
               </div>
             </div>
             <div class='col-md-4 mb-5'>
               <h5 class='font-weight-bold text-dark mb-4'>Quick Links</h5>
               <div class='d-flex flex-column justify-content-start'>
-                <a class='text-dark mb-2' href='index.html'>
-                  <i class='fa fa-angle-right mr-2'></i>Home
-                </a>
-                <a class='text-dark mb-2' href='shop.html'>
-                  <i class='fa fa-angle-right mr-2'></i>Our Shop
-                </a>
-                <a class='text-dark mb-2' href='detail.html'>
-                  <i class='fa fa-angle-right mr-2'></i>Shop Detail
-                </a>
-                <a class='text-dark mb-2' href='cart.html'>
-                  <i class='fa fa-angle-right mr-2'></i>Shopping Cart
-                </a>
-                <a class='text-dark mb-2' href='checkout.html'>
-                  <i class='fa fa-angle-right mr-2'></i>Checkout
-                </a>
-                <a class='text-dark' href='contact.html'>
-                  <i class='fa fa-angle-right mr-2'></i>Contact Us
-                </a>
+                <Link to='/' className='text-dark mb-2'>
+                  <i className='fa fa-angle-right mr-2'></i>Home
+                </Link>
+                <Link to='/Allproducts' className='text-dark mb-2'>
+                  <i className='fa fa-angle-right mr-2'></i>Our Shop
+                </Link>
+                <Link to='/about' className='text-dark mb-2'>
+                  <i className='fa fa-angle-right mr-2'></i>About us
+                </Link>
+                <Link to='/contact' className='text-dark'>
+                  <i className='fa fa-angle-right mr-2'></i>Contact Us
+                </Link>
               </div>
             </div>
           </div>

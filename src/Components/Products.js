@@ -98,6 +98,7 @@ const FeaturedProducts = ({
                       <Card.Title>{product.title.slice(0, 20)}</Card.Title>
                       <Card.Text>Price: {product.price}</Card.Text>
                       <Card.Text>Category: {product.category}</Card.Text>
+                      <Card.Text>SiteName: {product.site}</Card.Text>
                       <div>{renderStars(product.rating)}</div>
                     </Card.Body>
                   </Card>

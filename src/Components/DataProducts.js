@@ -64,6 +64,7 @@ const DataProducts = ({ doesShow, products }) => {
                   </Card.Title>
                   <Card.Text>Price: {product.price}</Card.Text>
                   <Card.Text>Category: {product.category}</Card.Text>
+                  <Card.Text>SiteName: {product.site}</Card.Text>
                   <div>{renderStars(product.rating)}</div>
                 </Card.Body>
               </Card>

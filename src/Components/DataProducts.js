@@ -42,8 +42,8 @@ const DataProducts = ({ doesShow, products }) => {
   }
 
   const imageStyle = {
-    height: '200px', // Set a fixed height for all images
-    objectFit: 'cover', // Maintain aspect ratio and crop as necessary
+    height: '200px',
+    objectFit: 'cover',
   }
 
   const productsContainerStyle = {
@@ -68,8 +68,8 @@ const DataProducts = ({ doesShow, products }) => {
                   variant='top'
                   src={product.images[0]}
                   style={imageStyle}
-                />{' '}
-                {/* Apply imageStyle here */}
+                />
+
                 <Card.Body>
                   <Card.Title style={cardTitleStyle}>
                     {product.title.slice(0, 20)}

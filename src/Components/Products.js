@@ -30,6 +30,10 @@ const FeaturedProducts = ({
     marginTop: '90px',
     // display: doesShow ? 'block' : 'none',
   }
+  const imageStyle = {
+    height: '200px',
+    objectFit: 'cover',
+  }
 
   return (
     <Container style={featuredStyle}>
@@ -93,7 +97,11 @@ const FeaturedProducts = ({
                   style={{ textDecoration: 'none', color: 'inherit' }}
                 >
                   <Card className='mb-3'>
-                    <Card.Img variant='top' src={product.images[0]} />
+                    <Card.Img
+                      variant='top'
+                      src={product.images[0]}
+                      style={imageStyle}
+                    />
                     <Card.Body>
                       <Card.Title>{product.title.slice(0, 20)}</Card.Title>
                       <Card.Text>Price: {product.price}</Card.Text>

@@ -10,22 +10,18 @@ function Login() {
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [rememberMe, setRememberMe] = useState(false)
+  const [rememberMe, setRememberMe] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
   const profile = useContext(userContext)
 
   const handleLoginClick = async () => {
-    if (rememberMe) {
-      const response = await login(email, password, rememberMe)
-      if (response) {
-        profile.update(response)
-        navigate('/')
-      } else {
-        alert('Login Failed')
-        setErrorMessage('Invalid email or password')
-      }
+    const response = await login(email, password, rememberMe)
+    if (response) {
+      profile.update(response)
+      navigate('/')
     } else {
-      alert('Please check the "Remember Me" checkbox to proceed.')
+      alert('Login Failed')
+      setErrorMessage('Invalid email or password')
     }
   }
 

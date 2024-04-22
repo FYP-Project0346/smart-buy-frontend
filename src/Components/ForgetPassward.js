@@ -23,7 +23,7 @@ function ForgotPassword() {
       <h2>Forgot Password</h2>
 
       <div className='form-group'>
-        <label htmlFor='email'>Email Address</label>
+        <label htmlFor='email'>Email Address: </label>
         <input
           type='email'
           id='email'
@@ -35,9 +35,9 @@ function ForgotPassword() {
         />
       </div>
       <div className='form-group'>
-        {/* <Link to='/setcode' className='submit-button'> */}
-        <button onClick={handleSubmit}>Reset Password</button>
-        {/* </Link> */}
+        <button onClick={handleSubmit} className='btn btn-primary'>
+          Reset Password
+        </button>
       </div>
       {message && <p className='message'>{message}</p>}
       <p className='back-to-login'>

@@ -40,9 +40,16 @@ const DataProducts = ({ doesShow, products }) => {
     overflow: 'hidden',
     textOverflow: 'ellipsis',
   }
+
+  const imageStyle = {
+    height: '200px', // Set a fixed height for all images
+    objectFit: 'cover', // Maintain aspect ratio and crop as necessary
+  }
+
   const productsContainerStyle = {
     marginTop: '20px',
   }
+
   if (!products || products.length === 0) {
     return <h3>No Data Found!</h3>
   }
@@ -57,7 +64,12 @@ const DataProducts = ({ doesShow, products }) => {
           <Col key={product._id} xs={12} sm={6} md={4} lg={3}>
             <Link to={`/details/${product._id}`} style={linkStyle}>
               <Card className='mb-3'>
-                <Card.Img variant='top' src={product.images[0]} />
+                <Card.Img
+                  variant='top'
+                  src={product.images[0]}
+                  style={imageStyle}
+                />{' '}
+                {/* Apply imageStyle here */}
                 <Card.Body>
                   <Card.Title style={cardTitleStyle}>
                     {product.title.slice(0, 20)}

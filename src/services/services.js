@@ -4,14 +4,7 @@ const GET_ALL_PRODUCTS_API = 'http://localhost:5000/products/get'
 const RESET_PASSWORD_API = 'http://localhost:5000/auth/request-forgot-password'
 const VERIFY_CODE_API = 'http://localhost:5000/auth/verify-code-reset-password'
 
-async function getAllProducts(
-  search,
-  limit = 16,
-  skip = 0,
-  max = 0,
-  min = 0,
-  sites = []
-) {
+async function getAllProducts(search, limit, skip, max, min, sites) {
   if (search === undefined) {
     search = ''
   }
@@ -20,13 +13,14 @@ async function getAllProducts(
     skip,
     max,
     min,
-    sites,
+    sites: JSON.stringify(sites),
     search,
   }
   try {
     let response = await axios.get(GET_ALL_PRODUCTS_API, {
       params,
     })
+    console.log(response.data.data)
     return response.data.data
   } catch (e) {
     alert('Could not get the data')

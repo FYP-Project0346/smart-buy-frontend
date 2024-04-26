@@ -11,9 +11,9 @@ const FeaturedProducts = ({
   maxPrice,
   setMinPrice,
   minPrice,
+  setSelectedStores,
+  selectedStores,
 }) => {
-  const [selectedStores, setSelectedStores] = useState([])
-
   const renderStars = (rating) => {
     const stars = []
 
@@ -25,6 +25,7 @@ const FeaturedProducts = ({
 
     return stars
   }
+
   const featuredStyle = {
     width: '100%',
     marginTop: '90px',
@@ -34,6 +35,7 @@ const FeaturedProducts = ({
     height: '200px',
     objectFit: 'cover',
   }
+  const filteredProducts = []
 
   return (
     <Container style={featuredStyle}>
@@ -45,7 +47,7 @@ const FeaturedProducts = ({
       <Row>
         <Col xs={12} md={3}>
           <h4>Stores</h4>
-          {['Shophive', 'Mega.pk', 'Priceoye', 'Ishopping', 'Qmart'].map(
+          {[`shophive`, `Mega.pk`, `priceoye`, `iShopping`, `Qmart`].map(
             (store) => (
               <Form.Check
                 key={store}
@@ -67,6 +69,18 @@ const FeaturedProducts = ({
               />
             )
           )}
+          <Button
+            onClick={() => {
+              // const filteredProducts = products.filter((product) =>
+              //   selectedStores.includes(product.site)
+              // )
+              console.log(selectedStores)
+              console.log(filteredProducts)
+            }}
+          >
+            Testing button
+          </Button>
+
           <h4>By Price</h4>
           <Form.Group className='d-flex align-items-center'>
             <Form.Control
@@ -107,7 +121,7 @@ const FeaturedProducts = ({
                       <Card.Text>Price: {product.price}</Card.Text>
                       <Card.Text>Category: {product.category}</Card.Text>
                       <Card.Text>SiteName: {product.site}</Card.Text>
-                      <div>{renderStars(product.rating)}</div>
+                      <div>{renderStars(product.ratings)}</div>
                     </Card.Body>
                   </Card>
                 </Link>

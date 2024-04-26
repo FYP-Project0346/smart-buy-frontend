@@ -2,22 +2,19 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faHeart, faBell } from '@fortawesome/free-solid-svg-icons'
-import service from "../services/services.js"
+import service from '../services/services.js'
 import { subscribe } from '../services/price_tracker_service.js'
 import { useContext } from 'react'
-import userContext from "../Context/Create-Context.js"
+import userContext from '../Context/Create-Context.js'
 import { useNavigate } from 'react-router-dom'
 
-
-
 function Details() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [data, setData] = useState(null)
   const [isFavouriteClicked, setIsFavouriteClicked] = useState(false)
   const [isSubscribeClicked, setIsSubscribeClicked] = useState(false)
   const { id } = useParams()
   const user = useContext(userContext)
-  
 
   const fetchData = async () => {
     try {
@@ -28,16 +25,8 @@ function Details() {
     }
   }
 
-  const handleSubscribeButtonActionHandler = async ()=>{
+  const handleSubscribeButtonActionHandler = async () => {
     const userId = user.id
-    // if (userId == undefined){
-    //   navigate("/login")
-    //   return;
-    // }
-    // if (userId == ""){
-    //   navigate("/login")
-    //   return ;
-    // }
 
     console.log(userId)
   }
@@ -46,18 +35,12 @@ function Details() {
     fetchData()
   }, [])
 
-  // useEffect(() => {
-  //   if (data) {
-  //     console.log('Data:', data)
-  //     console.log('Image URL:', data.images[0])
-  //   }
-  // }, [data])
-
   const renderStars = (rating) => {
     const stars = []
     for (let i = 0; i < 5; i++) {
       if (i < rating) {
         stars.push(<FontAwesomeIcon key={i} icon={faStar} color='gold' />)
+        console.log('rating:', rating)
       } else {
         stars.push(<FontAwesomeIcon key={i} icon={faStar} color='gray' />)
       }
@@ -83,8 +66,8 @@ function Details() {
                 className='product-image'
                 src={data.images[0]}
                 onError={(e) => {
-                  console.log("error occured")
-                  console.log('There is Error loading image:', e.nativeEvent);
+                  console.log('error occured')
+                  console.log('There is Error loading image:', e.nativeEvent)
                 }}
                 alt='Product'
                 onClick={() => {
@@ -107,9 +90,9 @@ function Details() {
           <h3 className='font-weight-semi-bold mb-4'>
             Category: {data.category}
           </h3>
-          {data.rating !== 'null' && (
+          {data.ratings !== 'null' && (
             <h3 className='font-weight mb-2 rating-starts'>
-              {renderStars(data.rating)}
+              {renderStars(data.ratings)}
             </h3>
           )}
           <div className='d-flex align-items-center justify-content-between mb-4 pt-2'>

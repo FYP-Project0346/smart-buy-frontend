@@ -10,6 +10,8 @@ function AllProducts() {
   const [searchTerm, setSearchTerm] = useState('')
   const [minprice, setMinPrice] = useState(0)
   const [maxprice, setMaxPrice] = useState(0)
+  const [selectedStores, setSelectedStores] = useState([])
+
   let productsInPage = 16
 
   async function searchProducts(query) {
@@ -20,8 +22,9 @@ function AllProducts() {
       skipProducts,
       maxprice,
       minprice,
-      undefined
+      selectedStores
     )
+    // console.log('printing products')
     // console.log(products)
     setProducts(products)
   }
@@ -71,6 +74,8 @@ function AllProducts() {
         setMinPrice={setMinPrice}
         maxPrice={maxprice}
         minPrice={minprice}
+        setSelectedStores={setSelectedStores}
+        selectedStores={selectedStores}
       />
       <div
         style={{

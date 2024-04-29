@@ -50,10 +50,11 @@ const DataProducts = ({ doesShow, products }) => {
     marginTop: '20px',
   }
 
-  if (!products || products.length === 0) {
-    return <h3>No Data Found!</h3>
-  }
-
+  // if (!products || products.length === 0) {
+  //   console.log('hello')
+  //   return <h3>No Data Found!</h3>
+  // }
+  console.log(products)
   return (
     <Container>
       <Row>

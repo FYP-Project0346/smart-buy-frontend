@@ -35,14 +35,7 @@ function AllProducts() {
 
   async function fetchProducts() {
     console.log('fetch products called...')
-    const fetchedProducts = await dbService.getAllProducts(
-      undefined,
-      undefined,
-      undefined,
-      undefined,
-      undefined,
-      undefined
-    )
+    const fetchedProducts = await dbService.getAllProducts('', 16, 0, 0, 0, [])
     setProducts(fetchedProducts)
   }
 

@@ -69,7 +69,7 @@ const FeaturedProducts = ({
               />
             )
           )}
-          <Button
+          {/* <Button
             onClick={() => {
               // const filteredProducts = products.filter((product) =>
               //   selectedStores.includes(product.site)
@@ -79,7 +79,7 @@ const FeaturedProducts = ({
             }}
           >
             Testing button
-          </Button>
+          </Button> */}
 
           <h4>By Price</h4>
           <Form.Group className='d-flex align-items-center'>

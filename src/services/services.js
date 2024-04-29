@@ -5,6 +5,12 @@ const RESET_PASSWORD_API = 'http://localhost:5000/auth/request-forgot-password'
 const VERIFY_CODE_API = 'http://localhost:5000/auth/verify-code-reset-password'
 
 async function getAllProducts(search, limit, skip, max, min, sites) {
+  console.log(`Service Search ${search}`)
+  console.log(`Service limit ${limit}`)
+  console.log(`Service skip ${skip}`)
+  console.log(`Service max ${max}`)
+  console.log(`Service min ${min}`)
+  console.log(`Service sites ${sites}`)
   if (search === undefined) {
     search = ''
   }

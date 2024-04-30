@@ -1,7 +1,9 @@
 import axios from "axios";
-const SUBSCRIBE_PRICE_TRACKER = "http://localhost:5000/price-track/subscribe";
-const VERIFY_SUBSCRIPTION = "http://localhost:5000/price-track/is-subscribed";
-const UNSUBSCRIBE_PRICE_TRACKER = "http://localhost:5000/price-track/unsubscribe";
+import { 
+    SUBSCRIBE_PRICE_TRACKER,
+    UNSUBSCRIBE_PRICE_TRACKER,
+    VERIFY_SUBSCRIPTION,
+ } from "./api";
 export async function subscribe(customerId, productId){
     if (customerId != ""){
         const response = await axios.post(SUBSCRIBE_PRICE_TRACKER, {

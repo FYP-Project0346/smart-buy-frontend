@@ -1,15 +1,15 @@
 import axios from 'axios'
 import { setLoginInfo, clearoutCookies, getLoginInfo } from './cookies'
-
-
-const registerEndPoint = 'http://localhost:5000/auth/register'
-const loginEndPoint = 'http://localhost:5000/auth/login'
-const VERIFY_TOKEN = 'http://localhost:5000/auth/verify_token'
-const GET_USER_DATA = "http://localhost:5000/user"
+import { 
+  REGISTER_ENDPOINT,
+  LOGIN_ENDPOINT,
+  VERIFY_TOKEN,
+  GET_USER_DATA,
+ } from './api'
 
 export const register = async (data) => {
   try {
-    await axios.post(registerEndPoint, data)
+    await axios.post(REGISTER_ENDPOINT, data)
     const response = await login(data.email, data.password, true)
     return response
   } catch (error) {
@@ -20,7 +20,7 @@ export const register = async (data) => {
 
 export const login = async (email, password, remember) => {
   try {
-    const response = await axios.post(loginEndPoint, {
+    const response = await axios.post(LOGIN_ENDPOINT, {
       username: email,
       password,
     })

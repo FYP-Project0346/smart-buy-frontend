@@ -26,6 +26,7 @@ const DataProducts = ({ doesShow, products }) => {
     width: '100%',
     marginTop: '80px',
     display: doesShow ? 'block' : 'none',
+    textAlign: 'center',
   }
 
   const linkStyle = {
@@ -40,28 +41,44 @@ const DataProducts = ({ doesShow, products }) => {
     textOverflow: 'ellipsis',
   }
 
-  if (!products || products.length === 0) {
-    return <h3>No Data Found!</h3>
+  const imageStyle = {
+    height: '200px',
+    objectFit: 'cover',
   }
 
+  const productsContainerStyle = {
+    marginTop: '20px',
+  }
+
+  // if (!products || products.length === 0) {
+  //   console.log('hello')
+  //   return <h3>No Data Found!</h3>
+  // }
+  console.log(products)
   return (
     <Container>
       <Row>
-        <h2 style={featuredStyle}>Featured Products</h2>
+        <h1 style={featuredStyle}>Featured Products</h1>
       </Row>
-      <Row>
+      <Row style={productsContainerStyle}>
         {products.map((product) => (
           <Col key={product._id} xs={12} sm={6} md={4} lg={3}>
             <Link to={`/details/${product._id}`} style={linkStyle}>
               <Card className='mb-3'>
-                <Card.Img variant='top' src={product.images[0]} />
+                <Card.Img
+                  variant='top'
+                  src={product.images[0]}
+                  style={imageStyle}
+                />
+
                 <Card.Body>
                   <Card.Title style={cardTitleStyle}>
                     {product.title.slice(0, 20)}
                   </Card.Title>
                   <Card.Text>Price: {product.price}</Card.Text>
                   <Card.Text>Category: {product.category}</Card.Text>
-                  <div>{renderStars(product.rating)}</div>
+                  <Card.Text>SiteName: {product.site}</Card.Text>
+                  <div>{renderStars(product.ratings)}</div>
                 </Card.Body>
               </Card>
             </Link>

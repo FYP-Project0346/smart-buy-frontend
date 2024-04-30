@@ -8,9 +8,12 @@ function AllProducts() {
   const [products, setProducts] = useState([])
   const [skipProducts, setSkipProducts] = useState(0)
   const [searchTerm, setSearchTerm] = useState('')
+  const [minprice, setMinPrice] = useState(0)
+  const [maxprice, setMaxPrice] = useState(0)
+  const [selectedStores, setSelectedStores] = useState([])
+
   let productsInPage = 16
-  let minprice = 10000
-  let maxprice = 25000
+
   async function searchProducts(query) {
     console.log('search products called...')
     const products = await dbService.getAllProducts(
@@ -19,9 +22,10 @@ function AllProducts() {
       skipProducts,
       maxprice,
       minprice,
-      undefined
+      selectedStores
     )
-    console.log(products)
+    // console.log('printing products')
+    // console.log(products)
     setProducts(products)
   }
 
@@ -31,14 +35,7 @@ function AllProducts() {
 
   async function fetchProducts() {
     console.log('fetch products called...')
-    const fetchedProducts = await dbService.getAllProducts(
-      undefined,
-      undefined,
-      undefined,
-      undefined,
-      undefined,
-      undefined
-    )
+    const fetchedProducts = await dbService.getAllProducts('', 16, 0, 0, 0, [])
     setProducts(fetchedProducts)
   }
 
@@ -63,7 +60,16 @@ function AllProducts() {
         setSearchTerm={setSearchTerm}
       />
 
-      <Products doesShow={false} products={products} />
+      <Products
+        doesShow={false}
+        products={products}
+        setMaxPrice={setMaxPrice}
+        setMinPrice={setMinPrice}
+        maxPrice={maxprice}
+        minPrice={minprice}
+        setSelectedStores={setSelectedStores}
+        selectedStores={selectedStores}
+      />
       <div
         style={{
           display: 'flex',

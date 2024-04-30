@@ -11,7 +11,7 @@ import { autologin } from '../services/auth'
 
 
 function Details() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [data, setData] = useState(null)
   const [isFavouriteClicked, setIsFavouriteClicked] = useState(false)
   const [isSubscribeClicked, setIsSubscribeClicked] = useState(false)
@@ -35,20 +35,28 @@ function Details() {
   async function handleSubscription(){
       handleAutoLogin().then(async (data)=>{
         // setLoginData(data)
-        const subscribed = await verifySubscription(data.id, id)
-        setSubscribed(subscribed)
+        try{
+          const subscribed = await verifySubscription(data.id, id)
+          setSubscribed(subscribed)
+        }catch(e){
+          setSubscribed(false)
+          console.error("Error in verifying subscription")
+        }
       })
   }
 
   async function handleAutoLogin() {
+    
     if (user.state.type !== 'guest') {
+    
       return user.state
     }
-
+    
     const data = await autologin()
     if (data) {
+    
       user.update(data)
-      return data
+      return data    
     }
   }
 
@@ -119,8 +127,8 @@ function Details() {
                 className='product-image'
                 src={data.images[0]}
                 onError={(e) => {
-                  console.log("error occured")
-                  console.log('There is Error loading image:', e.nativeEvent);
+                  console.log('error occured')
+                  console.log('There is Error loading image:', e)
                 }}
                 alt='Product'
                 onClick={() => {
@@ -143,9 +151,9 @@ function Details() {
           <h3 className='font-weight-semi-bold mb-4'>
             Category: {data.category}
           </h3>
-          {data.rating !== 'null' && (
+          {data.ratings !== 'null' && (
             <h3 className='font-weight mb-2 rating-starts'>
-              {renderStars(data.rating)}
+              {renderStars(data.ratings)}
             </h3>
           )}
           <div className='d-flex align-items-center justify-content-between mb-4 pt-2'>
@@ -182,6 +190,7 @@ function Details() {
                   backgroundColor: subscribed ? 'blue' : 'rgb(0, 65, 90)',
                   color: 'white',
                   padding: '10px 15px',
+                  marginRight: '1rem'
                 }}
                 onClick={handleSubscribeButtonActionHandler}
               >

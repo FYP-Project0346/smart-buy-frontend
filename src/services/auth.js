@@ -43,7 +43,6 @@ export const login = async (email, password, remember) => {
 export async function autologin(){
   try{
     const {email, token} = getLoginInfo()
-    console.log(`Token Sent: ${token}`)
     const response = await axios.get(GET_USER_DATA, {
       params:{
         email
@@ -52,21 +51,19 @@ export async function autologin(){
         authorization: `Barrier: ${token}`
       }
     })
-    console.log(response.data.code)
     if(response.status === 200){
       if (response.data.code == 200){
         const data2 = response.data.data
         let data = {
           type: "user",
-          id: data2.id,
+          id: data2._id,
           firstname: data2.firstname,
           lastname: data2.lastname,
           email: data2.email,
-          token: data2.token,
+          token: token,
         }
         return data;
       }else if (response.data.code == 204){
-        console.log("TOken expired")
         return false
       } 
     }

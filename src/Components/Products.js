@@ -15,7 +15,6 @@ const FeaturedProducts = ({ doesShow, products }) => {
 
     for (let i = 0; i < 5; i++) {
       const isFilled = i < Math.floor(rating)
-
       stars.push(isFilled ? <FaStar key={i} /> : <CiStar key={i} />)
     }
 

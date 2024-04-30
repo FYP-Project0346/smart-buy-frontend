@@ -12,7 +12,7 @@ function RegisterForm() {
     password: '',
     confirmPassword: '',
   })
-  const [errorMessage, setErrorMessage] = useState('')
+  // const [errorMessage, setErrorMessage] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -36,10 +36,11 @@ function RegisterForm() {
       password: formData.password,
     })
     console.log(data)
-    if (data.code == 200) {
+    if (data.code === 200) {
       navigate('/')
     } else {
-      setErrorMessage('Invalid email or password')
+      console.log("Invalid email or password")
+      // setErrorMessage('Invalid email or password')
     }
   }
 

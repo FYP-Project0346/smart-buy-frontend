@@ -5,7 +5,7 @@ import {
     VERIFY_SUBSCRIPTION,
  } from "./api";
 export async function subscribe(customerId, productId){
-    if (customerId != ""){
+    if (customerId !== ""){
         const response = await axios.post(SUBSCRIBE_PRICE_TRACKER, {
             "customer_id": customerId,
             "product_id": productId,
@@ -27,14 +27,14 @@ export async function unsubscribe(customerId, productId){
 }
 
 export async function verifySubscription(customerId, productId){
-    if (customerId != ""){
+    if (customerId !== ""){
         const response = await axios.get(VERIFY_SUBSCRIPTION, {
             params: {
                 customer_id: customerId,
                 product_id: productId,
             }
         });
-        return response.data.subscribed == "subscribed"
+        return response.data.subscribed === "subscribed"
     }else{
         return false
     }

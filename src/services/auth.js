@@ -1,9 +1,9 @@
 import axios from 'axios'
-import { setLoginInfo, clearoutCookies, getLoginInfo } from './cookies'
+import { setLoginInfo, getLoginInfo } from './cookies'
 import { 
   REGISTER_ENDPOINT,
   LOGIN_ENDPOINT,
-  VERIFY_TOKEN,
+  // VERIFY_TOKEN,
   GET_USER_DATA,
  } from './api'
 
@@ -25,7 +25,7 @@ export const login = async (email, password, remember) => {
       password,
     })
 
-    if (response.data.code == 200) {
+    if (response.data.code === 200) {
       const data = response.data
       if (remember) {
         setLoginInfo(data.email, data.token)
@@ -52,7 +52,7 @@ export async function autologin(){
       }
     })
     if(response.status === 200){
-      if (response.data.code == 200){
+      if (response.data.code === 200){
         const data2 = response.data.data
         let data = {
           type: "user",
@@ -63,7 +63,7 @@ export async function autologin(){
           token: token,
         }
         return data;
-      }else if (response.data.code == 204){
+      }else if (response.data.code === 204){
         return false
       } 
     }

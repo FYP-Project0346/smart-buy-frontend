@@ -8,13 +8,7 @@ import {
   VERIFY_CODE_API,
 } from './api'
 
-async function getAllProducts(search, limit, skip, max, min, sites) {
-  console.log(`Service Search ${search}`)
-  console.log(`Service limit ${limit}`)
-  console.log(`Service skip ${skip}`)
-  console.log(`Service max ${max}`)
-  console.log(`Service min ${min}`)
-  console.log(`Service sites ${sites}`)
+const  getAllProducts = async (search, limit, skip, max, min, sites) =>{
   if (search === undefined) {
     search = ''
   }
@@ -37,7 +31,7 @@ async function getAllProducts(search, limit, skip, max, min, sites) {
   }
 }
 
-async function getProductById(id) {
+const getProductById = async (id)=> {
   try {
     const response = await axios.get(GET_PRODUCT_BY_ID, {
       params: {
@@ -50,7 +44,7 @@ async function getProductById(id) {
   }
 }
 
-async function saveMessage(data) {
+const saveMessage = async (data) => {
   try {
     const response = await axios.post(
       SAVE_CONTACT_MSG,
@@ -62,7 +56,7 @@ async function saveMessage(data) {
   }
 }
 
-async function requestPasswordReset(email) {
+const requestPasswordReset = async (email) => {
   try {
     const response = await axios.post(RESET_PASSWORD_API, { email })
     return response.data
@@ -72,7 +66,7 @@ async function requestPasswordReset(email) {
   }
 }
 
-async function resetPasswordWithCode(email, code, newPassword) {
+const resetPasswordWithCode = async (email, code, newPassword)=> {
   try {
     const data = {
       email,
@@ -80,7 +74,7 @@ async function resetPasswordWithCode(email, code, newPassword) {
       newpassword: newPassword,
     }
     const response = await axios.post(VERIFY_CODE_API, data)
-    return response.data.code == 200
+    return response.data.code === 200
   } catch (error) {
     console.error('Error resetting password:', error)
     return false

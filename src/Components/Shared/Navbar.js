@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Button, Container, Form, Nav, Navbar } from 'react-bootstrap'
+import React from 'react'
+import { Button, Container, Nav, Navbar } from 'react-bootstrap'
 import { FaUser, FaRegUser } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import '../../CSS/Navbar.css'

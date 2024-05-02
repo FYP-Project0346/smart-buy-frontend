@@ -45,6 +45,11 @@
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 20px;
+  /* font-family: 'YourFontFamily', sans-serif; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.hero-section h3 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .hero-section p {

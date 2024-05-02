@@ -151,11 +151,11 @@ function HomePage() {
         <Container className='fixed-container'>
           <div className='row'>
             <div className='col-md-6'>
-              <h1>
-                Raining Offers For
-                <br /> Hot Summer!
-              </h1>
-              <h3>25% Off On All Products</h3>
+              <h1>Gateway to Smart Buying</h1>
+              <h4>
+                Elevate Your Shopping Experience with <br />
+                our Comprehensive Comparison Platform.
+              </h4>
               <div>
                 <Link to={'/Allproducts'}>
                   <Button
@@ -166,17 +166,19 @@ function HomePage() {
                     Shop Now
                   </Button>
                 </Link>
-                <Button
-                  variant='secondary'
-                  className='mx-2'
-                  style={{
-                    border: '1px solid white',
-                    background: 'transparent',
-                    marginTop: '20px',
-                  }}
-                >
-                  Find More
-                </Button>
+                <Link to={'/Allproducts'}>
+                  <Button
+                    variant='secondary'
+                    className='mx-2'
+                    style={{
+                      border: '1px solid white',
+                      background: 'transparent',
+                      marginTop: '20px',
+                    }}
+                  >
+                    Find More
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

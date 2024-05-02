@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap'
 import { FaStar } from 'react-icons/fa'
 import { CiStar } from 'react-icons/ci'
 import { Link } from 'react-router-dom'
+import defaultImage from '../img/SB-removebg-preview.png'
 
 const FeaturedProducts = ({
   doesShow,
@@ -29,13 +30,18 @@ const FeaturedProducts = ({
   const featuredStyle = {
     width: '100%',
     marginTop: '90px',
-    // display: doesShow ? 'block' : 'none',
   }
   const imageStyle = {
     height: '200px',
     objectFit: 'cover',
   }
-  const filteredProducts = []
+
+  const handleStoreSelection = (store) => {
+    const updatedStores = selectedStores.includes(store)
+      ? selectedStores.filter((selectedStore) => selectedStore !== store)
+      : [...selectedStores, store]
+    setSelectedStores(updatedStores)
+  }
 
   return (
     <Container style={featuredStyle}>
@@ -47,7 +53,7 @@ const FeaturedProducts = ({
       <Row>
         <Col xs={12} md={3}>
           <h4>Stores</h4>
-          {[`shophive`, `Mega.pk`, `priceoye`, `iShopping`, `Qmart`].map(
+          {['shophive', 'Mega.pk', 'priceoye', 'iShopping', 'Qmart'].map(
             (store) => (
               <Form.Check
                 key={store}
@@ -55,31 +61,10 @@ const FeaturedProducts = ({
                 label={store}
                 value={store}
                 checked={selectedStores.includes(store)}
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    setSelectedStores([...selectedStores, e.target.value])
-                  } else {
-                    setSelectedStores(
-                      selectedStores.filter(
-                        (selectedStore) => selectedStore !== e.target.value
-                      )
-                    )
-                  }
-                }}
+                onChange={() => handleStoreSelection(store)}
               />
             )
           )}
-          {/* <Button
-            onClick={() => {
-              // const filteredProducts = products.filter((product) =>
-              //   selectedStores.includes(product.site)
-              // )
-              console.log(selectedStores)
-              console.log(filteredProducts)
-            }}
-          >
-            Testing button
-          </Button> */}
 
           <h4>By Price</h4>
           <Form.Group className='d-flex align-items-center'>
@@ -97,9 +82,6 @@ const FeaturedProducts = ({
               onChange={(e) => setMaxPrice(e.target.value)}
             />
           </Form.Group>
-          {/* <Button variant='primary' onClick={handleSearch}>
-            Search
-          </Button> */}
         </Col>
 
         <Col xs={12} md={9}>
@@ -113,7 +95,7 @@ const FeaturedProducts = ({
                   <Card className='mb-3'>
                     <Card.Img
                       variant='top'
-                      src={product.images[0]}
+                      src={product.images[0] || defaultImage}
                       style={imageStyle}
                     />
                     <Card.Body>

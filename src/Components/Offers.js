@@ -22,19 +22,19 @@ const SpecialOffer = () => {
           <Col md={6}>
             <div style={{ padding: '20px', margin: '20px' }}>
               <h2 style={{ fontSize: '36px', fontWeight: 'bold' }}>
-                Limited Time Offer
+                Streamlined Shopping Experience
               </h2>
-              <h1 style={{ fontSize: '28px', marginTop: '10px' }}>
+              {/* <h1 style={{ fontSize: '28px', marginTop: '10px' }}>
                 Special Edition
-              </h1>
+              </h1> */}
               <div style={{ marginTop: '20px', fontSize: '20px' }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                Shop smarter with SmartBuy's intuitive price comparison tool.
+                Find the best deals and save big on your favorite products
               </div>
               <div style={{ marginTop: '20px', fontSize: '20px' }}>
                 <h4>
-                  Buy This T-shirt At 20% Discount, Use Code{' '}
-                  <strong>OFF20</strong>
+                  Fashion Finesse: Style Staples for Every Wardrobe
+                  {/* <strong>OFF20</strong> */}
                 </h4>
               </div>
             </div>

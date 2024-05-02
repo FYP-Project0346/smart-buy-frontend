@@ -1,6 +1,6 @@
 import React from 'react'
 import shoba from '../../img/shoba (2).jpeg'
-import abdulrehman from '../../img/Abdul rehman.jpeg'
+import abdulrehman from '../../img/hello.png'
 import aisha from '../../img/Aisha.jpeg'
 
 const OurTeam = () => {
@@ -13,7 +13,7 @@ const OurTeam = () => {
     },
     {
       name: 'Ayesha Fatima',
-      designation: 'Marketing Manager',
+      designation: 'Python Developer',
       image: aisha,
     },
   ]
@@ -24,10 +24,8 @@ const OurTeam = () => {
         <p>A Few Words About</p>
         <h1>Our Team</h1>
         <p>
-          Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris
-          vitae erat consequat auctor eu in elit.
-          <br /> Class aptent taciti sociosqu ad litora torquent per conubia
-          nostra.
+          We are a Computer Science Students in project we working on different
+          technologies like Reactjs, Nodejs ,MonoDB, and Python
         </p>
       </div>
       {/* Row for team member cards */}

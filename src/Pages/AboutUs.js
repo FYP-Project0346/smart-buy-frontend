@@ -5,6 +5,7 @@ import Text from '../Components/About/Text'
 import Team from '../Components/About/Team'
 import Features from '../Components/About/Features'
 import Footer from '../Components/Shared/Footer'
+import Featured from '../Components/Featured'
 
 function AboutUs() {
   return (
@@ -13,7 +14,7 @@ function AboutUs() {
       <Container />
       <Text />
       <Team />
-      <Features />
+      <Featured />
       <Footer />
     </div>
   )

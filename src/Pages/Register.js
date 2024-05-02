@@ -24,10 +24,16 @@ function RegisterForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // console.log('Username:', formData.username)
-    // console.log('Email:', formData.email)
-    // console.log('Password:', formData.password)
-    // console.log('Confirm Password:', formData.confirmPassword)
+    for (const field in formData) {
+      if (!formData[field]) {
+        setErrorMessage(`Please enter ${field}`)
+        return
+      }
+    }
+    if (formData.password !== formData.confirmPassword) {
+      setErrorMessage('Passwords do not match')
+      return
+    }
 
     const data = await register({
       firstname: formData.username,
@@ -35,8 +41,8 @@ function RegisterForm() {
       email: formData.email,
       password: formData.password,
     })
-    console.log(data)
-    if (data.code == 200) {
+
+    if (data.code === 200) {
       navigate('/')
     } else {
       setErrorMessage('Invalid email or password')
@@ -107,6 +113,9 @@ function RegisterForm() {
                 style={{ color: 'white' }}
               />
             </div>
+            {errorMessage && (
+              <div className='error-message'>{errorMessage}</div>
+            )}
             <div className='form-group'>
               <button type='submit' className='register-button'>
                 Register

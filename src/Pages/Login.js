@@ -15,6 +15,11 @@ function Login() {
   const profile = useContext(userContext)
 
   const handleLoginClick = async () => {
+    if (!email || !password) {
+      setErrorMessage('Please enter both email and password')
+      return
+    }
+
     const response = await login(email, password, rememberMe)
     if (response) {
       profile.update(response)
@@ -73,6 +78,7 @@ function Login() {
               Forgot Password?
             </Link>
           </div>
+          {errorMessage && <div className='error-message'>{errorMessage}</div>}
           <div className='form-group'>
             <button
               onClick={handleLoginClick}

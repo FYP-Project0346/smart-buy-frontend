@@ -16,12 +16,18 @@ const WhoWeAre = () => {
             <div>
               <h1>Who We Are</h1>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus,
-                <br /> luctus nec ullamcorper mattis, pulvinar dapibus leo. Nam
-                nec tellus a <br /> odio tincidunt auctor a ornare odio. Sed non
-                mauris vitae erat
-                <br /> consequat auctor eu in elit.
+                "At SmartBuy, our mission is simple: to make online shopping a
+                breeze.
+                <br /> With our expertise in frontend and backend development,
+                we're
+                <br /> dedicated to providing a seamless experience for users.
+                By leveraging <br />
+                web scraping technology, we ensure that you have all the
+                information
+                <br /> you need to make informed purchasing decisions. Trust
+                SmartBuy to <br />
+                streamline your shopping experience and save you time and
+                money."
               </p>
             </div>
           </div>

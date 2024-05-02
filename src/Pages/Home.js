@@ -4,11 +4,11 @@ import Offers from '../Components/Offers'
 import Website from '../Components/Website'
 import Products from '../Components/Products'
 import Footer from '../Components/Shared/Footer'
-import Featured from '../Components/Featured'
 import service from '../services/services'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import DataProducts from '../Components/DataProducts'
+import Features from '../Components/About/Features'
 
 function Home() {
   const [products, setProducts] = useState()
@@ -33,7 +33,7 @@ function Home() {
       {/* <Products doesShow={true} products={products} /> */}
       <DataProducts doesShow={true} products={products} />
       <Offers />
-      <Featured />
+      <Features />
       <Footer />
     </div>
   )

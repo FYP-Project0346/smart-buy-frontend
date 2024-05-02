@@ -16,6 +16,10 @@ function AllProducts() {
 
   async function searchProducts(query) {
     console.log('search products called...')
+    if (minprice > maxprice) {
+      alert('Please set a valid price range.')
+      return
+    }
     const products = await dbService.getAllProducts(
       query,
       productsInPage,
@@ -24,8 +28,6 @@ function AllProducts() {
       minprice,
       selectedStores
     )
-    // console.log('printing products')
-    // console.log(products)
     setProducts(products)
   }
 
@@ -70,6 +72,7 @@ function AllProducts() {
         setSelectedStores={setSelectedStores}
         selectedStores={selectedStores}
       />
+
       <div
         style={{
           display: 'flex',

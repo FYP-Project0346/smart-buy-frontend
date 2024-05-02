@@ -12,7 +12,7 @@ function RegisterForm() {
     password: '',
     confirmPassword: '',
   })
-  // const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -24,10 +24,20 @@ function RegisterForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // console.log('Username:', formData.username)
-    // console.log('Email:', formData.email)
-    // console.log('Password:', formData.password)
-    // console.log('Confirm Password:', formData.confirmPassword)
+
+    // Check if any field is empty
+    for (const key in formData) {
+      if (!formData[key]) {
+        setErrorMessage(`Please enter your ${key}.`)
+        return
+      }
+    }
+
+    // Check if passwords match
+    if (formData.password !== formData.confirmPassword) {
+      setErrorMessage('Passwords do not match.')
+      return
+    }
 
     const data = await register({
       firstname: formData.username,
@@ -39,8 +49,7 @@ function RegisterForm() {
     if (data.code === 200) {
       navigate('/')
     } else {
-      console.log('Invalid email or password')
-      // setErrorMessage('Invalid email or password')
+      setErrorMessage('Invalid email or password')
     }
   }
 
@@ -113,6 +122,9 @@ function RegisterForm() {
                 Register
               </button>
             </div>
+            {errorMessage && (
+              <div className='error-message'>{errorMessage}</div>
+            )}
           </form>
         </div>
       </Container>

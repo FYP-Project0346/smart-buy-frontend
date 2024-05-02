@@ -150,23 +150,13 @@ class ContactForm extends Component {
           <div className='col-lg-5 mb-5'>
             <h5 className='font-weight-semi-bold mb-3'>Get In Touch</h5>
             <p>
-              Justo sed diam ut sed amet duo amet lorem amet stet sea ipsum, sed
-              duo amet et. Est elitr dolor elitr erat sit sit. Dolor diam et
-              erat clita ipsum justo sed.
+            We'd love to hear from you! Whether you have a question about your order, need assistance with a product, or just want to say hi, our team is here to help.
             </p>
             <div className='d-flex flex-column mb-3'>
-              <h5 className='font-weight-semi-bold mb-3'>Store 1</h5>
+              <h5 className='font-weight-semi-bold mb-3'>Contact Through</h5>
               <p className='mb-2'>
-                <i className='fa fa-map-marker-alt text-primary mr-3'></i>123
-                Street, Islamabad, Pakistan
-              </p>
-              <p className='mb-2'>
-                <i className='fa fa-envelope text-primary mr-3'></i>
-                info@example.com
-              </p>
-              <p className='mb-2'>
-                <i className='fa fa-phone-alt text-primary mr-3'></i>+92 345
-                67890
+                <i className='fa fa-map-marker-alt text-primary mr-3'></i>
+                abrehman0346@gmail.com
               </p>
             </div>
           </div>

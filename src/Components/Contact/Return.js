@@ -24,11 +24,11 @@ function App() {
                     <h2 className='text-center'>Sales</h2>
                   </CardTitle>
                   <CardText className='text-center'>
-                    Vestibulum ante ipsum primis in faucibus orci luctus.
+                  Share your feedback on our sales process for continuous improvement.
                   </CardText>
-                  <CardText className='text-center custom-blue'>
+                  {/* <CardText className='text-center custom-blue'>
                     1800 123 4567
-                  </CardText>
+                  </CardText> */}
                 </CardBody>
               </Card>
             </div>
@@ -39,11 +39,11 @@ function App() {
                     <h2 className='text-center'>Complaints</h2>
                   </CardTitle>
                   <CardText className='text-center'>
-                    Vestibulum ante ipsum primis in faucibus orci luctus.
+                  Report issues or complaints about our sales experience here.
                   </CardText>
-                  <CardText className='text-center custom-blue'>
+                  {/* <CardText className='text-center custom-blue'>
                     1900 223 8899
-                  </CardText>
+                  </CardText> */}
                 </CardBody>
               </Card>
             </div>
@@ -54,11 +54,11 @@ function App() {
                     <h2 className='text-center'>Returns</h2>
                   </CardTitle>
                   <CardText className='text-center'>
-                    Vestibulum ante ipsum primis in faucibus orci luctus.
+                  Report issues or complaints related to our returns process.
                   </CardText>
-                  <CardText className='text-center custom-blue'>
+                  {/* <CardText className='text-center custom-blue'>
                     returns@mail.com
-                  </CardText>
+                  </CardText> */}
                 </CardBody>
               </Card>
             </div>
@@ -69,11 +69,11 @@ function App() {
                     <h2 className='text-center'>Marketing</h2>
                   </CardTitle>
                   <CardText className='text-center'>
-                    Vestibulum ante ipsum primis in faucibus orci luctus.
+                  Report concerns or complaints about our marketing strategies here
                   </CardText>
-                  <CardText className='text-center custom-blue'>
+                  {/* <CardText className='text-center custom-blue'>
                     1700 444 5578
-                  </CardText>
+                  </CardText> */}
                 </CardBody>
               </Card>
             </div>

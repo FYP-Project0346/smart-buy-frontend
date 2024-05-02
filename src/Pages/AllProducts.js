@@ -17,9 +17,9 @@ function AllProducts() {
   async function searchProducts(query) {
     console.log('search products called...')
 
-    if (minprice > 0 || maxprice > 0) {
-      setMinPrice(0)
-      setMaxPrice(0)
+    if ((minprice > 0 || maxprice > 0) && minprice >= maxprice) {
+      alert('Please enter a valid price range.')
+      return
     }
 
     const fetchedProducts = await dbService.getAllProducts(

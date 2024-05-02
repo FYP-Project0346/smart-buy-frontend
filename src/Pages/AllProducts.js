@@ -16,10 +16,12 @@ function AllProducts() {
 
   async function searchProducts(query) {
     console.log('search products called...')
-    if (minprice > maxprice) {
-      alert('Please set a valid price range.')
-      return
+    // Reset min and max prices to zero if they are greater than zero
+    if (minprice > 0 || maxprice > 0) {
+      setMinPrice(0)
+      setMaxPrice(0)
     }
+
     const fetchedProducts = await dbService.getAllProducts(
       query,
       productsInPage,
@@ -49,7 +51,6 @@ function AllProducts() {
 
   const handlePreviousPage = () => {
     if (skipProducts >= productsInPage) {
-      // Adjusted condition to avoid negative skipProducts
       setSkipProducts(skipProducts - productsInPage)
       searchProducts(searchTerm)
     }

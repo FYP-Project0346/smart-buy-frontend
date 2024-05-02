@@ -16,7 +16,7 @@ function AllProducts() {
 
   async function searchProducts(query) {
     console.log('search products called...')
-    // Reset min and max prices to zero if they are greater than zero
+
     if (minprice > 0 || maxprice > 0) {
       setMinPrice(0)
       setMaxPrice(0)

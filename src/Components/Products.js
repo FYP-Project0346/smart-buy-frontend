@@ -53,7 +53,7 @@ const FeaturedProducts = ({
       <Row>
         <Col xs={12} md={3}>
           <h4>Stores</h4>
-          {['shophive', 'Mega.pk', 'priceoye', 'iShopping', 'Qmart'].map(
+          {['shophive', 'homeshopping', 'priceoye', 'iShopping', 'bucket'].map(
             (store) => (
               <Form.Check
                 key={store}

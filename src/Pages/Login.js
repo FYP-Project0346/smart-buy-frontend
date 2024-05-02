@@ -11,7 +11,7 @@ function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [rememberMe, setRememberMe] = useState(true)
-  // const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
   const profile = useContext(userContext)
 
   const handleLoginClick = async () => {
@@ -26,7 +26,7 @@ function Login() {
       navigate('/')
     } else {
       alert('Login Failed')
-      // setErrorMessage('Invalid email or password')
+      setErrorMessage('Invalid email or password')
     }
   }
 

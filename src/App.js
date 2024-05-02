@@ -30,8 +30,6 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/setcode/:email' element={<SetCode />} />
-          <Route path='/text' element={<TestingPanel />} />
-          <Route path='/product' element={<DataProducts />} />
         </Routes>
       </Router>
     </ProfileState>

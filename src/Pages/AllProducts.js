@@ -15,11 +15,6 @@ function AllProducts() {
   let productsInPage = 16
 
   async function searchProducts(query) {
-    console.log('search products called...')
-    if (minprice > maxprice) {
-      alert('Please set a valid price range.')
-      return
-    }
     const products = await dbService.getAllProducts(
       query,
       productsInPage,
@@ -36,13 +31,11 @@ function AllProducts() {
   }, [])
 
   async function fetchProducts() {
-    console.log('fetch products called...')
     const fetchedProducts = await dbService.getAllProducts('', 16, 0, 0, 0, [])
     setProducts(fetchedProducts)
   }
 
   const handleNextPage = () => {
-    console.log('working...')
     setSkipProducts(skipProducts + productsInPage)
     searchProducts(searchTerm)
   }

@@ -2,33 +2,95 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faHeart, faBell } from '@fortawesome/free-solid-svg-icons'
-import service from '../services/services.js'
-import { subscribe } from '../services/price_tracker_service.js'
+import service from "../services/services.js"
+import { subscribe, verifySubscription, unsubscribe } from '../services/price_tracker_service.js'
 import { useContext } from 'react'
-import userContext from '../Context/Create-Context.js'
+import userContext from '../Context/Create-Context'
 import { useNavigate } from 'react-router-dom'
+import { autologin } from '../services/auth'
+
 
 function Details() {
   const navigate = useNavigate()
   const [data, setData] = useState(null)
   const [isFavouriteClicked, setIsFavouriteClicked] = useState(false)
   const [isSubscribeClicked, setIsSubscribeClicked] = useState(false)
+  const [subscribed, setSubscribed] = useState(false)
   const { id } = useParams()
   const user = useContext(userContext)
+  // const [loginData, setLoginData] = useState(user.state);
+  
+  
 
   const fetchData = async () => {
     try {
       const data = await service.getProductById(id)
       setData(data)
+      handleSubscription();
     } catch (error) {
       console.error('Error fetching data:', error)
     }
   }
 
-  const handleSubscribeButtonActionHandler = async () => {
-    const userId = user.id
+  async function handleSubscription(){
+      handleAutoLogin().then(async (data)=>{
+        // setLoginData(data)
+        try{
+          const subscribed = await verifySubscription(data.id, id)
+          setSubscribed(subscribed)
+        }catch(e){
+          setSubscribed(false)
+          console.error("Error in verifying subscription")
+        }
+      })
+  }
 
-    console.log(userId)
+  async function handleAutoLogin() {
+    
+    if (user.state.type !== 'guest') {
+    
+      return user.state
+    }
+    
+    const data = await autologin()
+    if (data) {
+    
+      user.update(data)
+      return data    
+    }
+  }
+
+  const handleSubscribeButtonActionHandler = async ()=>{
+    const userId = user.state.id
+
+    if (userId == undefined){
+      navigate("/login")
+      return;
+    }
+    if (userId == ""){
+      navigate("/login")
+      return ;
+    }
+
+    
+    if (subscribed){
+      const code = await unsubscribe(userId, id)
+      if (code == 200){
+        alert("You have been unsubscribed\nNow you'll not get notified when ever deal is available on that product")
+      }else{
+        alert("Couldn't unsubscribe you for some unexpacted reason.. Try Again,\n if problem persists then contact developer through Contact Us page.")
+      }
+    }else{
+      const code = await subscribe(userId, id)
+      if (code == 200){
+        alert("You have been subscribed\nNow you'll get notified when ever deal is available on that product")
+      }else{
+        alert("Couldn't subscribe you for some unexpacted reason.. Try Again,\n if problem persists then contact developer through Contact Us page.")
+      }
+    }
+
+    handleSubscription();
+
   }
 
   useEffect(() => {
@@ -40,7 +102,6 @@ function Details() {
     for (let i = 0; i < 5; i++) {
       if (i < rating) {
         stars.push(<FontAwesomeIcon key={i} icon={faStar} color='gold' />)
-        console.log('rating:', rating)
       } else {
         stars.push(<FontAwesomeIcon key={i} icon={faStar} color='gray' />)
       }
@@ -67,11 +128,11 @@ function Details() {
                 src={data.images[0]}
                 onError={(e) => {
                   console.log('error occured')
-                  console.log('There is Error loading image:', e.nativeEvent)
+                  console.log('There is Error loading image:', e)
                 }}
                 alt='Product'
                 onClick={() => {
-                  console.log('Click happened')
+                  console.log('Imsg Product Click happened')
                 }}
               />
             </div>
@@ -115,7 +176,6 @@ function Details() {
                 size='2x'
                 onClick={() => {
                   setIsSubscribeClicked(!isSubscribeClicked)
-                  console.log('Subscribe clicked')
                 }}
                 style={{ cursor: 'pointer' }}
               />
@@ -127,13 +187,14 @@ function Details() {
               <button
                 className='btn btn-primary px-3 mr-4'
                 style={{
-                  backgroundColor: 'rgb(0, 65, 90)',
+                  backgroundColor: subscribed ? 'blue' : 'rgb(0, 65, 90)',
                   color: 'white',
                   padding: '10px 15px',
+                  marginRight: '1rem'
                 }}
                 onClick={handleSubscribeButtonActionHandler}
               >
-                Subscribe
+                {subscribed ? "Unsubscribe": "Subscribe"}
               </button>
               <button
                 className='btn btn-primary px-3 ml-4'

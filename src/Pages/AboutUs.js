@@ -10,7 +10,7 @@ import Featured from '../Components/Featured'
 function AboutUs() {
   return (
     <div>
-      <Navbar />
+      <Navbar disableSearch={true} />
       <Container />
       <Text />
       <Team />

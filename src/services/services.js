@@ -1,16 +1,14 @@
 import axios from 'axios'
 
-const GET_ALL_PRODUCTS_API = 'http://localhost:5000/products/get'
-const RESET_PASSWORD_API = 'http://localhost:5000/auth/request-forgot-password'
-const VERIFY_CODE_API = 'http://localhost:5000/auth/verify-code-reset-password'
+import { 
+  GET_ALL_PRODUCTS_API, 
+  GET_PRODUCT_BY_ID,
+  RESET_PASSWORD_API,
+  SAVE_CONTACT_MSG,
+  VERIFY_CODE_API,
+} from './api'
 
-async function getAllProducts(search, limit, skip, max, min, sites) {
-  console.log(`Service Search ${search}`)
-  console.log(`Service limit ${limit}`)
-  console.log(`Service skip ${skip}`)
-  console.log(`Service max ${max}`)
-  console.log(`Service min ${min}`)
-  console.log(`Service sites ${sites}`)
+const  getAllProducts = async (search, limit, skip, max, min, sites) =>{
   if (search === undefined) {
     search = ''
   }
@@ -33,9 +31,9 @@ async function getAllProducts(search, limit, skip, max, min, sites) {
   }
 }
 
-async function getProductById(id) {
+const getProductById = async (id)=> {
   try {
-    const response = await axios.get('http://localhost:5000/products/getById', {
+    const response = await axios.get(GET_PRODUCT_BY_ID, {
       params: {
         id: id,
       },
@@ -46,19 +44,20 @@ async function getProductById(id) {
   }
 }
 
-async function saveMessage(data) {
+const saveMessage = async (data) => {
   try {
     const response = await axios.post(
-      'http://localhost:5000/contact/save',
+      SAVE_CONTACT_MSG,
       data
     )
-    return response.code === 200
+    console.log(response)
+    return response.data.code === 200
   } catch (e) {
     return false
   }
 }
 
-async function requestPasswordReset(email) {
+const requestPasswordReset = async (email) => {
   try {
     const response = await axios.post(RESET_PASSWORD_API, { email })
     return response.data
@@ -68,7 +67,7 @@ async function requestPasswordReset(email) {
   }
 }
 
-async function resetPasswordWithCode(email, code, newPassword) {
+const resetPasswordWithCode = async (email, code, newPassword)=> {
   try {
     const data = {
       email,
@@ -76,7 +75,7 @@ async function resetPasswordWithCode(email, code, newPassword) {
       newpassword: newPassword,
     }
     const response = await axios.post(VERIFY_CODE_API, data)
-    return response.data.code == 200
+    return response.data.code === 200
   } catch (error) {
     console.error('Error resetting password:', error)
     return false

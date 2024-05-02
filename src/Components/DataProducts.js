@@ -54,7 +54,6 @@ const DataProducts = ({ doesShow, products }) => {
   //   console.log('hello')
   //   return <h3>No Data Found!</h3>
   // }
-  console.log(products)
   return (
     <Container>
       <Row>

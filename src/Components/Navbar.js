@@ -39,7 +39,7 @@ function HomePage() {
   }
 
   function handleLoginRegisterVisibility() {
-    if (profile.state.type === 'guest') {
+    if (profile.state.type === 'guest' || profile.state.type == "") {
       return (
         <>
           <Nav.Link as={Link} to='/login'>

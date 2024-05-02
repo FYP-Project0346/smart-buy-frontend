@@ -3,7 +3,7 @@ import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap'
 import { FaStar } from 'react-icons/fa'
 import { CiStar } from 'react-icons/ci'
 import { Link } from 'react-router-dom'
-import defaultImage from '../img/SB-removebg-preview.png'
+import defaultImage from '../img/SB-removebg-preview.png' // Import the default image
 
 const FeaturedProducts = ({
   doesShow,
@@ -20,6 +20,7 @@ const FeaturedProducts = ({
 
     for (let i = 0; i < 5; i++) {
       const isFilled = i < Math.floor(rating)
+
       stars.push(isFilled ? <FaStar key={i} /> : <CiStar key={i} />)
     }
 
@@ -94,7 +95,7 @@ const FeaturedProducts = ({
                   <Card className='mb-3'>
                     <Card.Img
                       variant='top'
-                      src={product.images[0] || defaultImage}
+                      src={product.images[0] || defaultImage} // Use default image if product image is not available
                       style={imageStyle}
                     />
                     <Card.Body>

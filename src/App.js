@@ -12,6 +12,7 @@ import ProfileState from './Context/UserState'
 import Test from './Pages/Test'
 import ForgetPassword from './Components/ForgetPassward'
 import SetCode from './Components/SetCode'
+import TestingPanel from "./Pages/TestPanel"
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path='/forgot-password' element={<ForgetPassword />} />
           <Route path='/setcode/:email' element={<SetCode />} />
+          <Route path='/test' element={<TestingPanel />} />
         </Routes>
       </Router>
     </ProfileState>

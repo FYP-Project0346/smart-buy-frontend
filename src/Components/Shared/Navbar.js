@@ -5,10 +5,36 @@ import { Link } from 'react-router-dom'
 import '../../CSS/Navbar.css'
 import smartBuyLogo from '../../img/SB-removebg-preview.png'
 
-function HomePage({ searchActionHandler, searchTerm, setSearchTerm }) {
+function HomePage({ searchActionHandler, searchTerm, setSearchTerm, disableSearch=false }) {
   const handleSearch = async () => {
     await searchActionHandler(searchTerm)
     console.log('Searching for:', searchTerm)
+  }
+
+  const handleSearchDisplay = ()=>{
+    if (disableSearch){
+      return <div></div>
+    }else{
+      return <>
+        <input
+                placeholder='Search'
+                className='me-2'
+                aria-label='Search'
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <Button
+                onClick={() => {
+                  handleSearch()
+                }}
+                variant='outline-light'
+                as={Link}
+                to={`/Allproducts`}
+              >
+                Search
+              </Button>
+      </>
+    }
   }
 
   return (
@@ -51,23 +77,7 @@ function HomePage({ searchActionHandler, searchTerm, setSearchTerm }) {
                 <FaRegUser />
                 <span className='ms-1 d-none d-sm-inline'>Register</span>
               </Nav.Link>
-              <input
-                placeholder='Search'
-                className='me-2'
-                aria-label='Search'
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-              <Button
-                onClick={() => {
-                  handleSearch()
-                }}
-                variant='outline-light'
-                as={Link}
-                to={`/Allproducts`}
-              >
-                Search
-              </Button>
+              {handleSearchDisplay()}
             </Nav>
           </Navbar.Collapse>
         </Container>

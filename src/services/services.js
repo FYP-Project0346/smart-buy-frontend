@@ -50,7 +50,8 @@ const saveMessage = async (data) => {
       SAVE_CONTACT_MSG,
       data
     )
-    return response.code === 200
+    console.log(response)
+    return response.data.code === 200
   } catch (e) {
     return false
   }

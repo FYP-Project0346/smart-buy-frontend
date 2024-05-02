@@ -9,7 +9,7 @@ import Footer from '../Components/Shared/Footer'
 function AboutUs() {
   return (
     <div>
-      <Navbar />
+      <Navbar disableSearch={true} />
       <Container />
       <Text />
       <Team />

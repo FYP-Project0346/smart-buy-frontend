@@ -7,7 +7,7 @@ import Footer from '../Components/Shared/Footer'
 function ContactUs() {
   return (
     <div>
-      <Navbar />
+      <Navbar disableSearch={true} />
       <Container />
       <ContactForm />
       <Return />

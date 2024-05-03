@@ -53,18 +53,22 @@ const FeaturedProducts = ({
       <Row>
         <Col xs={12} md={3}>
           <h4>Stores</h4>
-          {['shophive', 'homeshopping', 'priceoye', 'iShopping', 'bucket'].map(
-            (store) => (
-              <Form.Check
-                key={store}
-                type='checkbox'
-                label={store}
-                value={store}
-                checked={selectedStores.includes(store)}
-                onChange={() => handleStoreSelection(store)}
-              />
-            )
-          )}
+          {[
+            'shophive',
+            'HomeShopping',
+            'priceoye',
+            'iShopping',
+            'bucket.pk',
+          ].map((store) => (
+            <Form.Check
+              key={store}
+              type='checkbox'
+              label={store}
+              value={store}
+              checked={selectedStores.includes(store)}
+              onChange={() => handleStoreSelection(store)}
+            />
+          ))}
 
           <h4>By Price</h4>
           <Form.Group className='d-flex align-items-center'>

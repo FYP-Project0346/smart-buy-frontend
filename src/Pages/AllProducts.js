@@ -16,8 +16,8 @@ function AllProducts() {
 
   async function searchProducts(query) {
     console.log('search products called...')
-    console.log(typeof minprice)
-    console.log(maxprice)
+    console.log(minprice)
+
     console.log(minprice > maxprice)
     if (parseInt(minprice) > parseInt(maxprice)) {
       alert('Please enter a valid price range.')

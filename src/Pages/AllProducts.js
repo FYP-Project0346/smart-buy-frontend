@@ -25,6 +25,7 @@ function AllProducts() {
     }
     setMinPrice(0)
     setMaxPrice(0)
+    //commit
 
     const fetchedProducts = await dbService.getAllProducts(
       query,

@@ -11,7 +11,7 @@ import { autologin } from '../services/auth'
 import { useNavigate } from 'react-router-dom'
 
 function HomePage() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('')
   const profile = useContext(userContext)
 
@@ -42,7 +42,7 @@ function HomePage() {
   }
 
   function handleLoginRegisterVisibility() {
-    if (profile.state.type === 'guest' || profile.state.type == "") {
+    if (profile.state.type === 'guest' || profile.state.type == '') {
       return (
         <>
           <Nav.Link as={Link} to='/login'>
@@ -134,10 +134,7 @@ function HomePage() {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <Button
-                  variant='outline-light'
-                  style={{ marginRight: '10px' }}
-                >
+                <Button variant='outline-light' style={{ marginRight: '10px' }}>
                   Search
                 </Button>
               </Form>
@@ -158,7 +155,7 @@ function HomePage() {
                 our Comprehensive Comparison Platform.
               </h4>
               <div>
-                <Link to={'/Allproducts'}>
+                <Link to={'/Allproducts/laptop'}>
                   <Button
                     variant='light'
                     className='mx-2'
@@ -167,7 +164,7 @@ function HomePage() {
                     Shop Now
                   </Button>
                 </Link>
-                <Link to={'/Allproducts'}>
+                <Link to={'/Allproducts/mobile'}>
                   <Button
                     variant='secondary'
                     className='mx-2'

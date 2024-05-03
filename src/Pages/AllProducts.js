@@ -23,6 +23,8 @@ function AllProducts() {
       alert('Please enter a valid price range.')
       return
     }
+    setMinPrice(0)
+    setMaxPrice(0)
 
     const fetchedProducts = await dbService.getAllProducts(
       query,

@@ -8,8 +8,10 @@ import userContext from '../Context/Create-Context'
 import { useContext } from 'react'
 import { clearoutLoginCookies } from '../services/cookies'
 import { autologin } from '../services/auth'
+import { useNavigate } from 'react-router-dom'
 
 function HomePage() {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('')
   const profile = useContext(userContext)
 
@@ -30,6 +32,7 @@ function HomePage() {
 
   const handleSearch = (e) => {
     e.preventDefault()
+    navigate(`/Allproducts/${searchTerm}`)
     console.log('Searching for:', searchTerm)
   }
 
@@ -133,8 +136,6 @@ function HomePage() {
                 />
                 <Button
                   variant='outline-light'
-                  as={Link}
-                  to='/Allproducts'
                   style={{ marginRight: '10px' }}
                 >
                   Search

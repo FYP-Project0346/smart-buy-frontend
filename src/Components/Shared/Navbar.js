@@ -1,13 +1,16 @@
 import React from 'react'
-import { Button, Container, Nav, Navbar } from 'react-bootstrap'
+import { Button, Container, Nav, Navbar, Form } from 'react-bootstrap'
 import { FaUser, FaRegUser } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import '../../CSS/Navbar.css'
 import smartBuyLogo from '../../img/SB-removebg-preview.png'
 
 function HomePage({ searchActionHandler, searchTerm, setSearchTerm, disableSearch=false }) {
-  const handleSearch = async () => {
-    await searchActionHandler(searchTerm)
+  // const navigate = useNavigate();
+
+  const handleSearch = async (e) => {
+    e.preventDefault()
+    searchActionHandler(searchTerm);
     console.log('Searching for:', searchTerm)
   }
 
@@ -15,25 +18,33 @@ function HomePage({ searchActionHandler, searchTerm, setSearchTerm, disableSearc
     if (disableSearch){
       return <div></div>
     }else{
-      return <>
-        <input
+      return <Form className='d-flex' onSubmit={handleSearch}>
+        <Form.Control
+                  type='search'
+                  placeholder='Search'
+                  className='me-2'
+                  aria-label='Search'
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+        {/* <input
                 placeholder='Search'
                 className='me-2'
                 aria-label='Search'
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
+                onChange={
+                  (event) => {
+                    setSearchTerm(event.target.value)
+                  }
+                }
+              /> */}
               <Button
-                onClick={() => {
-                  handleSearch()
-                }}
+               type='submit'
                 variant='outline-light'
-                as={Link}
-                to={`/Allproducts`}
               >
                 Search
               </Button>
-      </>
+      </Form>
     }
   }
 
@@ -47,7 +58,7 @@ function HomePage({ searchActionHandler, searchTerm, setSearchTerm, disableSearc
               alt='SmartBuy Logo'
               className='logo-image'
             />
-            SmartBuy
+            SmartBuyy
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbarScroll' />
           <Navbar.Collapse id='navbarScroll'>

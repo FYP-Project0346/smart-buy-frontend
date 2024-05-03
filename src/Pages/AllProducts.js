@@ -3,6 +3,7 @@ import Navbar from '../Components/Shared/Navbar'
 import Products from '../Components/Products'
 import Footer from '../Components/Shared/Footer'
 import dbService from '../services/services.js'
+import { useParams } from 'react-router-dom'
 
 function AllProducts() {
   const [products, setProducts] = useState([])
@@ -11,6 +12,7 @@ function AllProducts() {
   const [minprice, setMinPrice] = useState(0)
   const [maxprice, setMaxPrice] = useState(0)
   const [selectedStores, setSelectedStores] = useState([])
+  const params = useParams()
 
   let productsInPage = 15
 
@@ -23,11 +25,15 @@ function AllProducts() {
       alert('Please enter a valid price range.')
       return
     }
+    if(query == undefined){
+      query = params.query
+    }
+    setSearchTerm(query)
     setMinPrice(0)
     setMaxPrice(0)
     //commit
 
-    const fetchedProducts = await dbService.getAllProducts(
+    const products = await dbService.getAllProducts(
       query,
       productsInPage,
       skipProducts,
@@ -35,11 +41,12 @@ function AllProducts() {
       minprice,
       selectedStores
     )
-    setProducts(fetchedProducts)
+    setProducts(products)
   }
 
   useEffect(() => {
-    fetchProducts()
+    searchProducts()
+    // fetchProducts()
   }, [])
 
   async function fetchProducts() {

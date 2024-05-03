@@ -88,7 +88,7 @@ function Footer() {
             {/* Column 4 */}
             <Col xs={6} md={2} className='mb-4 mb-md-0'>
               <h5 className='mb-4' style={{ fontWeight: '600' }}>
-                Content
+                Contact
               </h5>
               <p className='mb-2'>
                 <i className='fa fa-map-marker-alt text-primary mr-3'></i>Sukkur

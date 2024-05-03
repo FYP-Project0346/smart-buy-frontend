@@ -15,6 +15,7 @@ const FeaturedProducts = ({
   setSelectedStores,
   selectedStores,
 }) => {
+  const [shownDefaultImg, setDefaultImg] = useState(false)
   const renderStars = (rating) => {
     const stars = []
 
@@ -97,10 +98,13 @@ const FeaturedProducts = ({
                   style={{ textDecoration: 'none', color: 'inherit' }}
                 >
                   <Card className='mb-3'>
-                    <Card.Img
+                    <img
                       variant='top'
-                      src={product.images[0] || defaultImage} // Use default image if product image is not available
+                      src={product.images[0]}
                       style={imageStyle}
+                      onError={(event) => {
+                        event.target.src = defaultImage
+                      }}
                     />
                     <Card.Body>
                       <Card.Title>{product.title.slice(0, 20)}</Card.Title>

@@ -26,7 +26,7 @@ function Login() {
       navigate('/')
     } else {
       alert('Login Failed')
-      // setErrorMessage('Invalid email or password')
+      setErrorMessage('Invalid email or password')
     }
   }
 

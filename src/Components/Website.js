@@ -5,7 +5,7 @@ import logo1 from '../img/shophive.webp'
 import logo2 from '../img/Homeshopping-Logo.jpg'
 import logo3 from '../img/priceoye-logo-.png'
 import logo4 from '../img/ishopping.png'
-import logo5 from '../img/Vmart.webp'
+import logo5 from '../img/bucket.png'
 
 function LogoCarousel() {
   const images = [logo1, logo2, logo3, logo4, logo5]

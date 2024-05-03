@@ -14,18 +14,24 @@ function AllProducts() {
   const [selectedStores, setSelectedStores] = useState([])
   const params = useParams()
 
-  let productsInPage = 16
+  let productsInPage = 15
 
   async function searchProducts(query) {
     console.log('search products called...')
-    if (minprice > maxprice) {
-      alert('Please set a valid price range.') // Show alert if min price is higher than max price
+    console.log(minprice)
+
+    console.log(minprice > maxprice)
+    if (parseInt(minprice) > parseInt(maxprice)) {
+      alert('Please enter a valid price range.')
       return
     }
     if(query == undefined){
       query = params.query
     }
     setSearchTerm(query)
+    setMinPrice(0)
+    setMaxPrice(0)
+
     const products = await dbService.getAllProducts(
       query,
       productsInPage,
@@ -44,7 +50,7 @@ function AllProducts() {
 
   async function fetchProducts() {
     console.log('fetch products called...')
-    const fetchedProducts = await dbService.getAllProducts('', 16, 0, 0, 0, [])
+    const fetchedProducts = await dbService.getAllProducts('', 15, 0, 0, 0, [])
     setProducts(fetchedProducts)
   }
 
@@ -55,7 +61,7 @@ function AllProducts() {
   }
 
   const handlePreviousPage = () => {
-    if (skipProducts > 0) {
+    if (skipProducts >= productsInPage) {
       setSkipProducts(skipProducts - productsInPage)
       searchProducts(searchTerm)
     }
@@ -89,7 +95,7 @@ function AllProducts() {
       >
         <button
           onClick={handlePreviousPage}
-          disabled={setSkipProducts === 0}
+          disabled={skipProducts === 0}
           className='btn btn-primary'
         >
           Previous

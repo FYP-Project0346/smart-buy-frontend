@@ -24,18 +24,12 @@ const SpecialOffer = () => {
               <h2 style={{ fontSize: '36px', fontWeight: 'bold' }}>
                 Streamlined Shopping Experience
               </h2>
-              {/* <h1 style={{ fontSize: '28px', marginTop: '10px' }}>
-                Special Edition
-              </h1> */}
               <div style={{ marginTop: '20px', fontSize: '20px' }}>
                 Shop smarter with SmartBuy's intuitive price comparison tool.
                 Find the best deals and save big on your favorite products
               </div>
               <div style={{ marginTop: '20px', fontSize: '20px' }}>
-                <h4>
-                  Fashion Finesse: Style Staples for Every Wardrobe
-                  {/* <strong>OFF20</strong> */}
-                </h4>
+                <h4>Fashion Finesse: Style Staples for Every Wardrobe</h4>
               </div>
             </div>
             <div className='d-flex justify-content-center'>
@@ -45,11 +39,11 @@ const SpecialOffer = () => {
             </div>
           </Col>
           <Col md={6} className='d-flex justify-content-center'>
-            <img
-              src={rightImage}
-              alt='Special Offer'
-              style={{ maxWidth: '100%', height: 'auto' }}
-            />
+            <div
+              style={{ maxWidth: '100%', height: 'auto', overflow: 'hidden' }}
+            >
+              <img src={rightImage} alt='Special Offer' className='img-fluid' />
+            </div>
           </Col>
         </Row>
       </Container>

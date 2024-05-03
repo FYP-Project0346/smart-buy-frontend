@@ -15,6 +15,7 @@ const FeaturedProducts = ({
   setSelectedStores,
   selectedStores,
 }) => {
+  const [shownDefaultImg, setDefaultImg] = useState(false)
   const renderStars = (rating) => {
     const stars = []
 
@@ -53,18 +54,22 @@ const FeaturedProducts = ({
       <Row>
         <Col xs={12} md={3}>
           <h4>Stores</h4>
-          {['shophive', 'Mega.pk', 'priceoye', 'iShopping', 'Qmart'].map(
-            (store) => (
-              <Form.Check
-                key={store}
-                type='checkbox'
-                label={store}
-                value={store}
-                checked={selectedStores.includes(store)}
-                onChange={() => handleStoreSelection(store)}
-              />
-            )
-          )}
+          {[
+            'shophive',
+            'HomeShopping',
+            'priceoye',
+            'iShopping',
+            'bucket.pk',
+          ].map((store) => (
+            <Form.Check
+              key={store}
+              type='checkbox'
+              label={store}
+              value={store}
+              checked={selectedStores.includes(store)}
+              onChange={() => handleStoreSelection(store)}
+            />
+          ))}
 
           <h4>By Price</h4>
           <Form.Group className='d-flex align-items-center'>
@@ -93,10 +98,13 @@ const FeaturedProducts = ({
                   style={{ textDecoration: 'none', color: 'inherit' }}
                 >
                   <Card className='mb-3'>
-                    <Card.Img
+                    <img
                       variant='top'
-                      src={product.images[0] || defaultImage} // Use default image if product image is not available
+                      src={product.images[0]}
                       style={imageStyle}
+                      onError={(event) => {
+                        event.target.src = defaultImage
+                      }}
                     />
                     <Card.Body>
                       <Card.Title>{product.title.slice(0, 20)}</Card.Title>

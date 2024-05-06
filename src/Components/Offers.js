@@ -33,7 +33,7 @@ const SpecialOffer = () => {
               </div>
             </div>
             <div className='d-flex justify-content-center'>
-              <Link to='/Allproducts'>
+              <Link to='/Allproducts/laptop'>
                 <Button variant='light'>Shop Now</Button>
               </Link>
             </div>

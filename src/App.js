@@ -13,7 +13,8 @@ import Test from './Pages/Test'
 import ForgotPassword from './Components/ForgetPassword'
 import SetCode from './Components/SetCode'
 import TestingPanel from './Pages/TestingPanel'
-import DataProducts from './Components/DataProducts'
+import Comparison from './Pages/Comparison'
+
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/setcode/:email' element={<SetCode />} />
+          <Route path='/test' element={<TestingPanel />} />
+          <Route path='/compare' element={<Comparison/>} />
         </Routes>
       </Router>
     </ProfileState>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Form, Button, Container } from 'react-bootstrap'
+import {testPriceTracking} from "../services/price_tracker_service" 
 
 function TestingPanel() {
   const [formData, setFormData] = useState({
@@ -15,9 +16,14 @@ function TestingPanel() {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Form data:', formData)
+    const id = formData.textInput
+    const status = formData.dealOption == 'deal'
+
+    await testPriceTracking(id, status)
+    console.log('Product Updated')
+    alert('Product UPdated')
   }
 
   return (

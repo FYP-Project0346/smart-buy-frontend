@@ -1,6 +1,6 @@
 // PRODUCTS APIs
-// const BASE_URL = "http://localhost:5000"
-const BASE_URL = 'https://smart-buy-express-app.onrender.com'
+const BASE_URL = "http://localhost:5000"
+// const BASE_URL = 'https://smart-buy-express-app.onrender.com'
 export const GET_ALL_PRODUCTS_API = `${BASE_URL}/products/get`
 export const RESET_PASSWORD_API = `${BASE_URL}/auth/request-forgot-password`
 export const VERIFY_CODE_API = `${BASE_URL}/auth/verify-code-reset-password`

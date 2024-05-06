@@ -135,6 +135,7 @@ function HomePage() {
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <Button
+                type='submit'
                   variant='outline-light'
                   style={{ marginRight: '10px' }}
                 >
@@ -158,7 +159,7 @@ function HomePage() {
                 our Comprehensive Comparison Platform.
               </h4>
               <div>
-                <Link to={'/Allproducts'}>
+                <Link to={'/Allproducts/laptop'}>
                   <Button
                     variant='light'
                     className='mx-2'
@@ -167,7 +168,7 @@ function HomePage() {
                     Shop Now
                   </Button>
                 </Link>
-                <Link to={'/Allproducts'}>
+                <Link to={'/Allproducts/mobile'}>
                   <Button
                     variant='secondary'
                     className='mx-2'

@@ -1,0 +1,15 @@
+.offcanvas-header {
+  background-color: #f8f9fa;
+}
+
+.offcanvas-body {
+  background-color: #ffffff;
+}
+
+.offcanvas-body .nav-link {
+  color: #000;
+}
+
+.offcanvas-body .nav-link:hover {
+  color: #007bff;
+}

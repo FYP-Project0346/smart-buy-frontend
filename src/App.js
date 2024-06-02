@@ -9,11 +9,10 @@ import AboutUs from './Pages/AboutUs'
 import ContactUs from './Pages/ContactUs'
 import Profile from './Pages/Profile'
 import ProfileState from './Context/UserState'
-import Test from './Pages/Test'
 import ForgotPassword from './Components/ForgetPassword'
 import SetCode from './Components/SetCode'
 import TestingPanel from './Pages/TestingPanel'
-import DataProducts from './Components/DataProducts'
+import ShopNow from './Components/ShopNow' // Ensure this import is correct
 
 function App() {
   return (
@@ -28,8 +27,11 @@ function App() {
           <Route path='/about' element={<AboutUs />} />
           <Route path='/contact' element={<ContactUs />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/text' element={<TestingPanel />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/setcode/:email' element={<SetCode />} />
+          <Route path='/ShopNow' element={<ShopNow />} />{' '}
+          {/* Ensure this route is correct */}
         </Routes>
       </Router>
     </ProfileState>

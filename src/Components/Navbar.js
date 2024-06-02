@@ -42,7 +42,7 @@ function HomePage() {
   }
 
   function handleLoginRegisterVisibility() {
-    if (profile.state.type === 'guest' || profile.state.type == '') {
+    if (profile.state.type === 'guest' || profile.state.type === '') {
       return (
         <>
           <Nav.Link as={Link} to='/login'>
@@ -60,7 +60,7 @@ function HomePage() {
   }
 
   function handleProfileDetailsDropdownVisibility() {
-    if (profile.state.type != 'guest') {
+    if (profile.state.type !== 'guest') {
       return (
         <>
           <Dropdown className='ml-2'>
@@ -148,14 +148,14 @@ function HomePage() {
       <div className='hero-section'>
         <Container className='fixed-container'>
           <div className='row'>
-            <div className='col-md-6'>
+            <div className='col-md-8'>
               <h1>Gateway to Smart Buying</h1>
               <h4>
                 Elevate Your Shopping Experience with <br />
                 our Comprehensive Comparison Platform.
               </h4>
               <div>
-                <Link to={'/Allproducts/laptop'}>
+                <Link to={'/Allproducts/iphone'}>
                   <Button
                     variant='light'
                     className='mx-2'

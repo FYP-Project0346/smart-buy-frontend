@@ -1,5 +1,4 @@
 import React from 'react'
-import { Carousel } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import logo1 from '../img/shophive.webp'
 import logo2 from '../img/Homeshopping-Logo.jpg'
@@ -8,38 +7,33 @@ import logo4 from '../img/ishopping.png'
 import logo5 from '../img/bucket.png'
 
 function LogoCarousel() {
-  const images = [logo1, logo2, logo3, logo4, logo5]
+  const images = [
+    { src: logo1, url: 'https://www.shophive.com' },
+    { src: logo2, url: 'https://www.homeshopping.pk' },
+    { src: logo3, url: 'https://www.priceoye.pk' },
+    { src: logo4, url: 'https://www.ishopping.pk' },
+    { src: logo5, url: 'https://www.bucket.pk' },
+  ]
 
   return (
     <div style={{ maxWidth: '100%', overflowX: 'hidden', marginTop: '50px' }}>
-      <Carousel>
-        <Carousel.Item>
-          <div className='d-flex justify-content-around align-items-center'>
-            {images.slice(0, 5).map((image, index) => (
-              <img
-                key={index}
-                className='d-block'
-                src={image}
-                alt={`Slide ${index + 1}`}
-                style={{ maxWidth: '20%' }}
-              />
-            ))}
-          </div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div className='d-flex justify-content-around align-items-center'>
-            {images.slice(5).map((image, index) => (
-              <img
-                key={index}
-                className='d-block'
-                src={image}
-                alt={`Slide ${index + 6}`}
-                style={{ maxWidth: '20%' }}
-              />
-            ))}
-          </div>
-        </Carousel.Item>
-      </Carousel>
+      <div className='d-flex justify-content-around align-items-center'>
+        {images.map((image, index) => (
+          <a
+            href={image.url}
+            key={index}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <img
+              className='d-block'
+              src={image.src}
+              alt={`Logo ${index + 1}`}
+              style={{ width: '250px', height: 'auto' }}
+            />
+          </a>
+        ))}
+      </div>
     </div>
   )
 }

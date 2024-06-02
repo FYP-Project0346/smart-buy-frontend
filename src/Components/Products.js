@@ -58,7 +58,7 @@ const FeaturedProducts = ({
         <Col xs={12} md={3}>
           <h4>Stores</h4>
           {[
-            'shophive',
+            'shophive ',
             'HomeShopping',
             'priceoye',
             'iShopping',

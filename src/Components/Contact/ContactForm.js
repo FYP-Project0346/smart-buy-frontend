@@ -1,29 +1,21 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import services from '../../services/services'
 
-class ContactForm extends Component {
-  state = {
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-    islogin: false,
-  }
+function ContactForm({loginData}) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
 
-  handleInputChange = (e) => {
-    const { name, value } = e.target
-    this.setState({ [name]: value })
-  }
-
-  handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     // Check if all required fields are filled out
     if (
-      this.state.name === '' ||
-      this.state.email === '' ||
-      this.state.message === '' ||
-      this.state.subject === ''
+      name === '' ||
+      email === '' ||
+      message === '' ||
+      subject === ''
     ) {
       alert('Please fill out all required fields')
       return
@@ -31,14 +23,15 @@ class ContactForm extends Component {
 
     const currentDate = new Date().toLocaleString() // Get current date and time
     const formData = {
-      name: this.state.name,
-      email: this.state.email,
-      subject: this.state.subject,
-      message: this.state.message,
+      name: name,
+      email: email,
+      subject: subject,
+      message: message,
       currentDate: currentDate,
-      islogin: this.state.islogin,
+      islogin: loginData.type !== "guest",
+      cus_id: loginData.id
     }
-
+    console.log(formData)
     try {
       const isSuccess = await services.saveMessage(formData)
       if (isSuccess) {
@@ -51,9 +44,6 @@ class ContactForm extends Component {
       alert('Error saving message')
     }
   }
-
-  render() {
-    const { name, email, subject, message } = this.state
 
     return (
       <div
@@ -76,7 +66,7 @@ class ContactForm extends Component {
                 name='sentMessage'
                 id='contactForm'
                 noValidate='novalidate'
-                onSubmit={this.handleSubmit}
+                onSubmit={handleSubmit}
               >
                 <div className='control-group'>
                   <input
@@ -86,7 +76,9 @@ class ContactForm extends Component {
                     name='name'
                     placeholder='Your Name'
                     value={name}
-                    onChange={this.handleInputChange}
+                    onChange={(e)=>{
+                      setName(e.target.value)
+                    }}
                     required='required'
                     data-validation-required-message='Please enter your name'
                   />
@@ -100,7 +92,9 @@ class ContactForm extends Component {
                     name='email'
                     placeholder='Your Email'
                     value={email}
-                    onChange={this.handleInputChange}
+                    onChange={(e)=>{
+                      setEmail(e.target.value)
+                    }}
                     required='required'
                     data-validation-required-message='Please enter your email'
                   />
@@ -114,7 +108,9 @@ class ContactForm extends Component {
                     name='subject'
                     placeholder='Subject'
                     value={subject}
-                    onChange={this.handleInputChange}
+                    onChange={(e)=>{
+                      setSubject(e.target.value)
+                    }}
                     required='required'
                     data-validation-required-message='Please enter a subject'
                   />
@@ -128,7 +124,9 @@ class ContactForm extends Component {
                     name='message'
                     placeholder='Message'
                     value={message}
-                    onChange={this.handleInputChange}
+                    onChange={(e)=>{
+                      setMessage(e.target.value)
+                    }}
                     required='required'
                     data-validation-required-message='Please enter your message'
                   ></textarea>
@@ -163,7 +161,6 @@ class ContactForm extends Component {
         </div>
       </div>
     )
-  }
 }
 
 export default ContactForm

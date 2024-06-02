@@ -1,11 +1,11 @@
-import React from 'react'
+import { useContext, React } from 'react'
 import { Button, Container, Nav, Navbar, Form } from 'react-bootstrap'
 import { FaUser, FaRegUser } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import '../../CSS/Navbar.css'
 import smartBuyLogo from '../../img/SB-removebg-preview.png'
 
-function HomePage({ searchActionHandler, searchTerm, setSearchTerm, disableSearch=false }) {
+function HomePage({ searchActionHandler, searchTerm, setSearchTerm, disableSearch = false, loginData = {type:"guest"} }) {
   // const navigate = useNavigate();
 
   const handleSearch = async (e) => {
@@ -14,19 +14,42 @@ function HomePage({ searchActionHandler, searchTerm, setSearchTerm, disableSearc
     console.log('Searching for:', searchTerm)
   }
 
-  const handleSearchDisplay = ()=>{
-    if (disableSearch){
+  const handleDisplayRegistrations = () => {
+    try {
+      if (loginData.type !== "guest") {
+        return <></>
+      }
+    } catch (e) {
+      console.error("Error in shared Navbar while checking if user is logged in..")
+      console.error(e)
+    }
+
+    return <Nav>
+      <Nav.Link as={Link} to='/login'>
+        <FaUser />
+        <span className='ms-1 d-none d-sm-inline'>Login</span>
+      </Nav.Link>
+      <Nav.Link as={Link} to='/register'>
+        <FaRegUser />
+        <span className='ms-1 d-none d-sm-inline'>Register</span>
+      </Nav.Link>
+      {handleSearchDisplay()}
+    </Nav>;
+  }
+
+  const handleSearchDisplay = () => {
+    if (disableSearch) {
       return <div></div>
-    }else{
+    } else {
       return <Form className='d-flex' onSubmit={handleSearch}>
         <Form.Control
-                  type='search'
-                  placeholder='Search'
-                  className='me-2'
-                  aria-label='Search'
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
+          type='search'
+          placeholder='Search'
+          className='me-2'
+          aria-label='Search'
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
         {/* <input
                 placeholder='Search'
                 className='me-2'
@@ -38,12 +61,12 @@ function HomePage({ searchActionHandler, searchTerm, setSearchTerm, disableSearc
                   }
                 }
               /> */}
-              <Button
-               type='submit'
-                variant='outline-light'
-              >
-                Search
-              </Button>
+        <Button
+          type='submit'
+          variant='outline-light'
+        >
+          Search
+        </Button>
       </Form>
     }
   }
@@ -58,7 +81,7 @@ function HomePage({ searchActionHandler, searchTerm, setSearchTerm, disableSearc
               alt='SmartBuy Logo'
               className='logo-image'
             />
-            SmartBuyy
+            SmartBuy
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbarScroll' />
           <Navbar.Collapse id='navbarScroll'>
@@ -79,17 +102,7 @@ function HomePage({ searchActionHandler, searchTerm, setSearchTerm, disableSearc
                 </Link>
               </Nav.Item>
             </Nav>
-            <Nav>
-              <Nav.Link as={Link} to='/login'>
-                <FaUser />
-                <span className='ms-1 d-none d-sm-inline'>Login</span>
-              </Nav.Link>
-              <Nav.Link as={Link} to='/register'>
-                <FaRegUser />
-                <span className='ms-1 d-none d-sm-inline'>Register</span>
-              </Nav.Link>
-              {handleSearchDisplay()}
-            </Nav>
+            {handleDisplayRegistrations()}
           </Navbar.Collapse>
         </Container>
       </Navbar>

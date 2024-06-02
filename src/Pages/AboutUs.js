@@ -6,11 +6,14 @@ import Team from '../Components/About/Team'
 import Features from '../Components/About/Features'
 import Footer from '../Components/Shared/Footer'
 import Featured from '../Components/Featured'
+import userContext from '../Context/Create-Context'
+import { useContext } from 'react'
 
 function AboutUs() {
+  const loginData = useContext(userContext)
   return (
     <div>
-      <Navbar disableSearch={true} />
+      <Navbar disableSearch={true} loginData={loginData} />
       <Container />
       <Text />
       <Team />

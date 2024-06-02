@@ -56,7 +56,7 @@ function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link to='/Allproducts' className='text-dark'>
+                  <Link to='/Allproducts/laptop' className='text-dark'>
                     Products
                   </Link>
                 </li>

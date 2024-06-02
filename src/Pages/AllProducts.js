@@ -91,7 +91,7 @@ function AllProducts() {
         style={{
           display: 'flex',
           justifyContent: 'space-between',
-          margin: '20px',
+          margin: '20px ',
         }}
       >
         <button

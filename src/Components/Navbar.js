@@ -11,7 +11,7 @@ import { autologin } from '../services/auth'
 import { useNavigate } from 'react-router-dom'
 
 function HomePage() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('')
   const profile = useContext(userContext)
 
@@ -42,7 +42,7 @@ function HomePage() {
   }
 
   function handleLoginRegisterVisibility() {
-    if (profile.state.type === 'guest' || profile.state.type == "") {
+    if (profile.state.type === 'guest' || profile.state.type == '') {
       return (
         <>
           <Nav.Link as={Link} to='/login'>

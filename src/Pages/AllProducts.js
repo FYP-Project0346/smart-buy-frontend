@@ -31,6 +31,7 @@ function AllProducts() {
     setSearchTerm(query)
     setMinPrice(0)
     setMaxPrice(0)
+    //commit
 
     const products = await dbService.getAllProducts(
       query,

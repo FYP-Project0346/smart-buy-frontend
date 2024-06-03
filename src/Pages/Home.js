@@ -17,7 +17,7 @@ function Home() {
   }, [])
 
   async function getProducts() {
-    const data = await service.getAllProducts('', 16, 0, 0, 0, [])
+    const data = await service.getAllProducts('mobile', 16, 0, 200000, 40000, [])
     setProducts(data)
   }
 

@@ -75,13 +75,7 @@ const FeaturedProducts = ({
               />
             </div>
           ))}
-          <Button
-            variant='primary'
-            onClick={() => handleSearch(searchTerm)}
-            style={{ marginTop: '10px' }}
-          >
-            Search
-          </Button>
+          
           <h4 style={featuredStyle}>Price Range</h4>
           <Form.Group className='d-flex align-items-center'>
             <Form.Control
@@ -98,6 +92,13 @@ const FeaturedProducts = ({
               onChange={(e) => setMaxPrice(e.target.value)}
             />
           </Form.Group>
+          <Button
+            variant='primary'
+            onClick={() => handleSearch(searchTerm)}
+            style={{ marginTop: '10px' }}
+          >
+            Filter
+          </Button>
           {/* <h4 style={featuredStyle}>Categories</h4>
           <div className='categories'>
             {[

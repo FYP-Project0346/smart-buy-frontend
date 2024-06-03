@@ -12,12 +12,8 @@ import ProfileState from './Context/UserState'
 import ForgotPassword from './Components/ForgetPassword'
 import SetCode from './Components/SetCode'
 import TestingPanel from './Pages/TestingPanel'
-<<<<<<< HEAD
 import Comparison from './Pages/Comparison'
-
-=======
-import ShopNow from './Components/ShopNow' // Ensure this import is correct
->>>>>>> 0cb9e6f429348194308f0580af0b3f086119abec
+import ShopNow from './Components/ShopNow' 
 
 function App() {
   return (
@@ -35,13 +31,9 @@ function App() {
           <Route path='/text' element={<TestingPanel />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/setcode/:email' element={<SetCode />} />
-<<<<<<< HEAD
           <Route path='/test' element={<TestingPanel />} />
           <Route path='/compare' element={<Comparison/>} />
-=======
-          <Route path='/ShopNow' element={<ShopNow />} />{' '}
-          {/* Ensure this route is correct */}
->>>>>>> 0cb9e6f429348194308f0580af0b3f086119abec
+          <Route path='/ShopNow' element={<ShopNow />} />
         </Routes>
       </Router>
     </ProfileState>

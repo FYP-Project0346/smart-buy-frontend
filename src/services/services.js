@@ -24,7 +24,6 @@ const  getAllProducts = async (search, limit, skip, max, min, sites) =>{
     let response = await axios.get(GET_ALL_PRODUCTS_API, {
       params,
     })
-    console.log(response.data.data)
     return response.data.data
   } catch (e) {
     alert('Could not get the data')

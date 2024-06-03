@@ -135,7 +135,9 @@ function Details() {
             className='carousel slide'
             data-ride='carousel'
           >
-            <div className='carousel-inner border'>
+            <div className='carousel-inner border' style={{
+              boxShadow: "0px 0px 30px gray"
+            }}>
               <img
                 className='product-image'
                 src={data.images[0]}

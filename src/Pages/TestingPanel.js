@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { testPriceTracking } from '../services/price_tracker_service'
 import { Form, Button, Container } from 'react-bootstrap'
 import {testPriceTracking} from "../services/price_tracker_service" 
 
@@ -24,6 +25,11 @@ function TestingPanel() {
     await testPriceTracking(id, status)
     console.log('Product Updated')
     alert('Product UPdated')
+<<<<<<< HEAD
+=======
+    // console.log('first', id)
+    // console.log('second', status)
+>>>>>>> 0cb9e6f429348194308f0580af0b3f086119abec
   }
 
   return (

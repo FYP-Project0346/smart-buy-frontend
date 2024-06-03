@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../Components/Shared/Navbar'
+import Navbar from '../Components/AllProduct/Navbar.js'
 import Products from '../Components/Products'
 import Footer from '../Components/Shared/Footer'
 import dbService from '../services/services.js'
@@ -25,7 +25,7 @@ function AllProducts() {
       alert('Please enter a valid price range.')
       return
     }
-    if(query == undefined){
+    if (query == undefined) {
       query = params.query
     }
     setSearchTerm(query)
@@ -91,7 +91,7 @@ function AllProducts() {
         style={{
           display: 'flex',
           justifyContent: 'space-between',
-          margin: '20px',
+          margin: '20px ',
         }}
       >
         <button

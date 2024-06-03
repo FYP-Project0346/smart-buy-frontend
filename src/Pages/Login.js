@@ -47,6 +47,7 @@ function Login() {
                 className='form-input'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                style={{ color: 'white' }}
               />
             </div>
           </div>

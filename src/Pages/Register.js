@@ -74,6 +74,7 @@ function RegisterForm() {
                 className='form-input'
                 value={formData.username}
                 onChange={handleChange}
+                style={{ color: 'white' }}
               />
             </div>
             <div className='form-group'>
@@ -87,6 +88,7 @@ function RegisterForm() {
                 className='form-input'
                 value={formData.email}
                 onChange={handleChange}
+                style={{ color: 'white' }}
               />
             </div>
             <div className='form-group'>

@@ -3,15 +3,16 @@ import { Container, Row, Col, Button } from 'react-bootstrap'
 import backgroundImage from '../img/th1.jpg'
 import rightImage from '../img/Boy.png'
 import { Link } from 'react-router-dom'
+import shop from '../img/shop.jpg'
 
 const SpecialOffer = () => {
   const containerStyle = {
-    backgroundImage: `url(${backgroundImage})`,
+    backgroundImage: `url(${shop})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     padding: '50px 0',
     height: '80vh',
-    color: 'white',
+    color: 'black',
     marginTop: '80px',
   }
 
@@ -38,13 +39,13 @@ const SpecialOffer = () => {
               </Link>
             </div>
           </Col>
-          <Col md={6} className='d-flex justify-content-center'>
+          {/* <Col md={6} className='d-flex justify-content-center'>
             <div
               style={{ maxWidth: '100%', height: 'auto', overflow: 'hidden' }}
             >
               <img src={rightImage} alt='Special Offer' className='img-fluid' />
             </div>
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     </div>

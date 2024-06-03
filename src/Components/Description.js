@@ -2,13 +2,16 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faHeart, faBell } from '@fortawesome/free-solid-svg-icons'
-import service from "../services/services.js"
-import { subscribe, verifySubscription, unsubscribe } from '../services/price_tracker_service.js'
+import service from '../services/services.js'
+import {
+  subscribe,
+  verifySubscription,
+  unsubscribe,
+} from '../services/price_tracker_service.js'
 import { useContext } from 'react'
 import userContext from '../Context/Create-Context'
 import { useNavigate } from 'react-router-dom'
 import { autologin } from '../services/auth'
-
 
 function Details() {
   const navigate = useNavigate()
@@ -18,79 +21,74 @@ function Details() {
   const [subscribed, setSubscribed] = useState(false)
   const { id } = useParams()
   const user = useContext(userContext)
-  // const [loginData, setLoginData] = useState(user.state);
-  
-  
 
   const fetchData = async () => {
     try {
       const data = await service.getProductById(id)
       setData(data)
-      handleSubscription();
+      handleSubscription()
     } catch (error) {
       console.error('Error fetching data:', error)
     }
   }
 
-  async function handleSubscription(){
-      handleAutoLogin().then(async (data)=>{
-        // setLoginData(data)
-        try{
-          const subscribed = await verifySubscription(data.id, id)
-          setSubscribed(subscribed)
-        }catch(e){
-          setSubscribed(false)
-          console.error("Error in verifying subscription")
-        }
-      })
+  async function handleSubscription() {
+    handleAutoLogin().then(async (data) => {
+      try {
+        const subscribed = await verifySubscription(data.id, id)
+        setSubscribed(subscribed)
+      } catch (e) {
+        setSubscribed(false)
+        console.error('Error in verifying subscription')
+      }
+    })
   }
 
   async function handleAutoLogin() {
-    
     if (user.state.type !== 'guest') {
-    
       return user.state
     }
-    
+
     const data = await autologin()
     if (data) {
-    
       user.update(data)
-      return data    
+      return data
     }
   }
 
-  const handleSubscribeButtonActionHandler = async ()=>{
+  const handleSubscribeButtonActionHandler = async () => {
     const userId = user.state.id
 
-    if (userId == undefined){
-      navigate("/login")
-      return;
-    }
-    if (userId == ""){
-      navigate("/login")
-      return ;
+    if (userId == undefined || userId == '') {
+      navigate('/login')
+      return
     }
 
-    
-    if (subscribed){
+    if (subscribed) {
       const code = await unsubscribe(userId, id)
-      if (code == 200){
-        alert("You have been unsubscribed\nNow you'll not get notified when ever deal is available on that product")
-      }else{
-        alert("Couldn't unsubscribe you for some unexpacted reason.. Try Again,\n if problem persists then contact developer through Contact Us page.")
+      if (code == 200) {
+        alert(
+          "You have been unsubscribed\nNow you'll not get notified whenever a deal is available on that product."
+        )
+      } else {
+        alert(
+          "Couldn't unsubscribe you for some unexpected reason. Try again,\nif the problem persists then contact the developer through the Contact Us page."
+        )
       }
-    }else{
+    } else {
       const code = await subscribe(userId, id)
-      if (code == 200){
-        alert("You have been subscribed\nNow you'll get notified when ever deal is available on that product")
-      }else{
-        alert("Couldn't subscribe you for some unexpacted reason.. Try Again,\n if problem persists then contact developer through Contact Us page.")
+      if (code == 200) {
+        alert(
+          "You have been subscribed\nNow you'll get notified whenever a deal is available on that product."
+        )
+      } else {
+        alert(
+          "Couldn't subscribe you for some unexpected reason. Try again,\nif the problem persists then contact the developer through the Contact Us page."
+        )
       }
     }
 
-    handleSubscription();
-
+    handleSubscription()
   }
 
   useEffect(() => {
@@ -113,8 +111,23 @@ function Details() {
     return null
   }
 
+  function Description(text) {
+    console.log(text)
+    const formattedText = text.split('////n////').map((item, index) => {
+      console.log(`item ----> ${item}`)
+      return (
+        <React.Fragment key={index}>
+          {item}
+          <br />
+        </React.Fragment>
+      )
+    })
+
+    return <div>{formattedText}</div>
+  }
+
   return (
-    <div className='container-fluid py-5'>
+    <div className='container-fluid py-5' style={{ marginTop: '50px' }}>
       <div className='row px-xl-5'>
         <div className='col-lg-5 pb-5'>
           <div
@@ -127,13 +140,9 @@ function Details() {
                 className='product-image'
                 src={data.images[0]}
                 onError={(e) => {
-                  console.log('error occured')
-                  console.log('There is Error loading image:', e)
+                  console.log('Error loading image:', e)
                 }}
                 alt='Product'
-                onClick={() => {
-                  console.log('Imsg Product Click happened')
-                }}
               />
             </div>
           </div>
@@ -164,7 +173,6 @@ function Details() {
                 size='2x'
                 onClick={() => {
                   setIsFavouriteClicked(!isFavouriteClicked)
-                  console.log('Favourite clicked')
                 }}
                 style={{ cursor: 'pointer' }}
               />
@@ -190,11 +198,11 @@ function Details() {
                   backgroundColor: subscribed ? 'blue' : 'rgb(0, 65, 90)',
                   color: 'white',
                   padding: '10px 15px',
-                  marginRight: '1rem'
+                  marginRight: '1rem',
                 }}
                 onClick={handleSubscribeButtonActionHandler}
               >
-                {subscribed ? "Unsubscribe": "Subscribe"}
+                {subscribed ? 'Unsubscribe' : 'Subscribe'}
               </button>
               <button
                 className='btn btn-primary px-3 ml-4'
@@ -220,8 +228,14 @@ function Details() {
             color: '#082137',
           }}
         >
-          {data.desc}
+          {Description(data.desc)}
         </p>
+      </div>
+
+      {/* New div example */}
+      <div className='row px-xl-5 ml-2'>
+        <h4>Additional Information</h4>
+        <p>This is some additional information about the product.</p>
       </div>
     </div>
   )
